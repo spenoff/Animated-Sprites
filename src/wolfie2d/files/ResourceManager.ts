@@ -9,9 +9,25 @@ import {SpriteTypeData, AnimationStateData, AnimationFrameData} from './SpriteTy
 import {HashTable} from '../data/HashTable'
 import {WebGLGameRenderingSystem} from '../rendering/WebGLGameRenderingSystem'
 import {WebGLGameTexture} from '../rendering/WebGLGameTexture'
+import {AnimatedSprite} from '../scene/sprite/AnimatedSprite'
 import {AnimatedSpriteType} from '../scene/sprite/AnimatedSpriteType'
 
+//constants assed by me
+const DEMO_SPRITE_TYPES : string[] = [
+    'resources/animated_sprites/RedCircleMan.json',
+    'resources/animated_sprites/MultiColorBlock.json'
+];
+const DEMO_SPRITE_STATES = {
+    FORWARD_STATE: 'FORWARD',
+    REVERSE_STATE: 'REVERSE'
+};
+const DEMO_TEXTURES : string[] = [
+    'resources/images/EightBlocks.png', 
+    'resources/images/RedCircleMan.png'
+];
+
 export class ResourceManager {
+    
     // GAME TEXTURES 
     private gameTextures : Array<WebGLGameTexture> = new Array();
     private gameTextureIds : HashTable<number> = {};
@@ -87,6 +103,21 @@ export class ResourceManager {
     }
 
     // PRIVATE HELPER METHODS
+
+    //public helper methods
+    public generate_random_sprite(posX : number, posY : number) : AnimatedSprite{
+        let canvasWidth : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).width;
+        let canvasHeight : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).height;
+
+
+        let spriteTypeToUse : string = DEMO_SPRITE_TYPES[0];
+        let animatedSpriteType : AnimatedSpriteType = this.getAnimatedSpriteTypeById(spriteTypeToUse);
+        let spriteToAdd : AnimatedSprite = new AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE);
+        let newX : number = posX - (animatedSpriteType.getSpriteWidth()/2);
+        let newY : number = posY - (animatedSpriteType.getSpriteHeight()/2);
+        spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+        return spriteToAdd;
+    }
 
     // LOADS A NEW JSON FILE AND UPON COMPLETION CALLS THE callback FUNCTION
     private loadJsonFile(testFilePath : string, callback : Function) : void {

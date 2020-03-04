@@ -9,6 +9,9 @@ export class UIController {
     private scene : SceneGraph;
     private dragOffsetX : number;
     private dragOffsetY : number;
+    private numObjectsToAdd : number;
+    private xPos : number;
+    private yPos : number;
 
     public constructor() {}
 
@@ -17,6 +20,7 @@ export class UIController {
         this.scene = initScene;
         this.dragOffsetX = -1;
         this.dragOffsetY = -1;
+        this.numObjectsToAdd = 0;
 
         let canvas : HTMLCanvasElement = <HTMLCanvasElement>document.getElementById(canvasId);
         canvas.addEventListener("mousedown", this.mouseDownHandler);
@@ -27,6 +31,8 @@ export class UIController {
     public mouseDownHandler = (event : MouseEvent) : void => {
         let mousePressX : number = event.clientX;
         let mousePressY : number = event.clientY;
+        this.xPos = mousePressX;
+        this.yPos = mousePressY;
         let sprite : AnimatedSprite = this.scene.getSpriteAt(mousePressX, mousePressY);
         console.log("mousePressX: " + mousePressX);
         console.log("mousePressY: " + mousePressY);
@@ -49,6 +55,25 @@ export class UIController {
     }
 
     public mouseUpHandler = (event : MouseEvent) : void => {
+        if(this.spriteToDrag == null){
+            this.numObjectsToAdd++;
+        }
         this.spriteToDrag = null;
+    }
+
+    public getNumObjectsToAdd() : number{
+        return this.numObjectsToAdd;
+    }
+
+    public subNumObjectsToAdd(){
+        this.numObjectsToAdd--;
+    }
+
+    public getXPos() : number {
+        return this.xPos;
+    }
+
+    public getYPos() : number {
+        return this.yPos;
     }
 }

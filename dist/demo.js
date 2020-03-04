@@ -171,6 +171,8 @@ var Game = function (_GameLoopTemplate_1$G) {
     }, {
         key: "begin",
         value: function begin() {}
+        //setTimeout(this.update1, 1000);
+
         /*
          * This draws the game. Note that we are not currently using the
          * interpolation value, but could once physics is involved.
@@ -185,6 +187,11 @@ var Game = function (_GameLoopTemplate_1$G) {
             // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
             this.renderingSystem.render(visibleSprites);
         }
+    }, {
+        key: "update1",
+        value: function update1() {
+            this.update(1);
+        }
         /**
          * Updates the scene.
          */
@@ -193,6 +200,18 @@ var Game = function (_GameLoopTemplate_1$G) {
         key: "update",
         value: function update(delta) {
             this.sceneGraph.update(delta);
+            var to_add = this.uiController.getNumObjectsToAdd();
+            console.log("j");
+            if (to_add > 0) {
+                for (var i = 0; i < to_add; i++) {
+                    console.log("i" + to_add.toString());
+                    var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos());
+                    this.sceneGraph.addAnimatedSprite(new_sprite);
+                    var visibleSprites = this.sceneGraph.scope();
+                    this.uiController.subNumObjectsToAdd();
+                }
+                this.renderingSystem.render(visibleSprites);
+            }
         }
         /**
          * Updates the FPS counter.
@@ -222,7 +241,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var WebGLGameTexture_1 = require("../rendering/WebGLGameTexture");
+var AnimatedSprite_1 = require("../scene/sprite/AnimatedSprite");
 var AnimatedSpriteType_1 = require("../scene/sprite/AnimatedSpriteType");
+//constants assed by me
+var DEMO_SPRITE_TYPES = ['resources/animated_sprites/RedCircleMan.json', 'resources/animated_sprites/MultiColorBlock.json'];
+var DEMO_SPRITE_STATES = {
+    FORWARD_STATE: 'FORWARD',
+    REVERSE_STATE: 'REVERSE'
+};
+var DEMO_TEXTURES = ['resources/images/EightBlocks.png', 'resources/images/RedCircleMan.png'];
 
 var ResourceManager = function () {
     function ResourceManager() {
@@ -331,6 +358,22 @@ var ResourceManager = function () {
             }
         }
         // PRIVATE HELPER METHODS
+        //public helper methods
+
+    }, {
+        key: "generate_random_sprite",
+        value: function generate_random_sprite(posX, posY) {
+            var canvasWidth = document.getElementById("game_canvas").width;
+            var canvasHeight = document.getElementById("game_canvas").height;
+            var spriteTypeToUse = DEMO_SPRITE_TYPES[0];
+            var animatedSpriteType = this.getAnimatedSpriteTypeById(spriteTypeToUse);
+            var spriteToAdd = new AnimatedSprite_1.AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE);
+            var newX = posX - animatedSpriteType.getSpriteWidth() / 2;
+            var newY = posY - animatedSpriteType.getSpriteHeight() / 2;
+            var randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
+            spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+            return spriteToAdd;
+        }
         // LOADS A NEW JSON FILE AND UPON COMPLETION CALLS THE callback FUNCTION
 
     }, {
@@ -407,7 +450,7 @@ var ResourceManager = function () {
 
 exports.ResourceManager = ResourceManager;
 
-},{"../rendering/WebGLGameTexture":12,"../scene/sprite/AnimatedSpriteType":16}],4:[function(require,module,exports){
+},{"../rendering/WebGLGameTexture":12,"../scene/sprite/AnimatedSprite":15,"../scene/sprite/AnimatedSpriteType":16}],4:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2300,6 +2343,8 @@ var UIController = function () {
         this.mouseDownHandler = function (event) {
             var mousePressX = event.clientX;
             var mousePressY = event.clientY;
+            _this.xPos = mousePressX;
+            _this.yPos = mousePressY;
             var sprite = _this.scene.getSpriteAt(mousePressX, mousePressY);
             console.log("mousePressX: " + mousePressX);
             console.log("mousePressY: " + mousePressY);
@@ -2317,6 +2362,9 @@ var UIController = function () {
             }
         };
         this.mouseUpHandler = function (event) {
+            if (_this.spriteToDrag == null) {
+                _this.numObjectsToAdd++;
+            }
             _this.spriteToDrag = null;
         };
     }
@@ -2328,10 +2376,31 @@ var UIController = function () {
             this.scene = initScene;
             this.dragOffsetX = -1;
             this.dragOffsetY = -1;
+            this.numObjectsToAdd = 0;
             var canvas = document.getElementById(canvasId);
             canvas.addEventListener("mousedown", this.mouseDownHandler);
             canvas.addEventListener("mousemove", this.mouseMoveHandler);
             canvas.addEventListener("mouseup", this.mouseUpHandler);
+        }
+    }, {
+        key: "getNumObjectsToAdd",
+        value: function getNumObjectsToAdd() {
+            return this.numObjectsToAdd;
+        }
+    }, {
+        key: "subNumObjectsToAdd",
+        value: function subNumObjectsToAdd() {
+            this.numObjectsToAdd--;
+        }
+    }, {
+        key: "getXPos",
+        value: function getXPos() {
+            return this.xPos;
+        }
+    }, {
+        key: "getYPos",
+        value: function getYPos() {
+            return this.yPos;
         }
     }]);
 

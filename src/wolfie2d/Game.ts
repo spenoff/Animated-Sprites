@@ -39,6 +39,7 @@ export class Game extends GameLoopTemplate {
     }
 
     public begin() : void {
+       //setTimeout(this.update1, 1000);
     }
 
     /*
@@ -54,12 +55,30 @@ export class Game extends GameLoopTemplate {
         this.renderingSystem.render(visibleSprites);
     }
 
+    private update1() : void{
+        this.update(1);
+    }
+
     /**
      * Updates the scene.
      */
     public update(delta : number) : void {
         this.sceneGraph.update(delta);
+         var to_add = this.uiController.getNumObjectsToAdd();
+         console.log("j");
+         if(to_add > 0){
+            for(var i = 0; i < to_add; i++){
+                console.log("i" + to_add.toString());
+                var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos());
+                this.sceneGraph.addAnimatedSprite(new_sprite);
+                var visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
+                this.uiController.subNumObjectsToAdd();
+            }
+            this.renderingSystem.render(visibleSprites);
+        }
     }
+
+    
     
     /**
      * Updates the FPS counter.
