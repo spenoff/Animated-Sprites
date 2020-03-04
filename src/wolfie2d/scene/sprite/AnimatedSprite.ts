@@ -17,6 +17,11 @@ export class AnimatedSprite extends SceneObject {
         this.frameCounter = 0;
     }
 
+    public clearSprite() : void {
+        this.spriteType.zeroSpriteHeight();
+        this.spriteType.zeroSpriteWidth();
+    }
+
     public getAnimationFrameIndex() : number {
         return this.animationFrameIndex;
     }

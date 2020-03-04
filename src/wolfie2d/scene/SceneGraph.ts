@@ -26,6 +26,14 @@ export class SceneGraph {
         this.animatedSprites.push(sprite);
     }
 
+    public removeAnimatedSprite(sprite : AnimatedSprite) : void {
+        var spriteIndex = this.animatedSprites.indexOf(sprite, 0);
+        if(spriteIndex > -1) {
+            console.log("It's being removed");
+            this.animatedSprites.splice(spriteIndex, 1);
+        }
+    }
+
     public getSpriteAt(testX : number, testY : number) : AnimatedSprite {
         for (let sprite of this.animatedSprites) {
             if (sprite.contains(testX, testY))

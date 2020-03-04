@@ -45,8 +45,16 @@ export class AnimatedSpriteType {
         return this.spriteWidth;
     }
 
+    public zeroSpriteWidth() : void {
+        this.spriteWidth = 0;
+    }
+
     public getSpriteHeight() : number {
         return this.spriteHeight;
+    }
+
+    public zeroSpriteHeight() : void {
+        this.spriteHeight = 0;
     }
 
     public getSpriteSheetTexture() : WebGLGameTexture {

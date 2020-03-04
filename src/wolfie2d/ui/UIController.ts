@@ -12,6 +12,7 @@ export class UIController {
     private numObjectsToAdd : number;
     private xPos : number;
     private yPos : number;
+    private spritesToRemove : Array<AnimatedSprite>;
 
     public constructor() {}
 
@@ -21,11 +22,13 @@ export class UIController {
         this.dragOffsetX = -1;
         this.dragOffsetY = -1;
         this.numObjectsToAdd = 0;
+        this.spritesToRemove = [];
 
         let canvas : HTMLCanvasElement = <HTMLCanvasElement>document.getElementById(canvasId);
         canvas.addEventListener("mousedown", this.mouseDownHandler);
         canvas.addEventListener("mousemove", this.mouseMoveHandler);
         canvas.addEventListener("mouseup", this.mouseUpHandler);
+        canvas.addEventListener("dblclick", this.doubleClickHandler);
     }
 
     public mouseDownHandler = (event : MouseEvent) : void => {
@@ -59,6 +62,25 @@ export class UIController {
             this.numObjectsToAdd++;
         }
         this.spriteToDrag = null;
+    }
+
+    public doubleClickHandler = (event : MouseEvent) : void => {
+        let mousePressX : number = event.clientX;
+        let mousePressY : number = event.clientY;
+        this.xPos = mousePressX;
+        this.yPos = mousePressY;
+        let sprite : AnimatedSprite = this.scene.getSpriteAt(mousePressX, mousePressY);
+        if(sprite != null){
+            this.spritesToRemove.push(sprite);
+        }
+    }
+
+    public getSpritesToRemove() : Array<AnimatedSprite> {
+        return this.spritesToRemove;
+    }
+
+    public popSpritesToRemove() : AnimatedSprite {
+        return this.spritesToRemove.pop();
     }
 
     public getNumObjectsToAdd() : number{

@@ -187,11 +187,6 @@ var Game = function (_GameLoopTemplate_1$G) {
             // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
             this.renderingSystem.render(visibleSprites);
         }
-    }, {
-        key: "update1",
-        value: function update1() {
-            this.update(1);
-        }
         /**
          * Updates the scene.
          */
@@ -201,16 +196,19 @@ var Game = function (_GameLoopTemplate_1$G) {
         value: function update(delta) {
             this.sceneGraph.update(delta);
             var to_add = this.uiController.getNumObjectsToAdd();
-            console.log("j");
             if (to_add > 0) {
                 for (var i = 0; i < to_add; i++) {
-                    console.log("i" + to_add.toString());
                     var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos());
                     this.sceneGraph.addAnimatedSprite(new_sprite);
                     var visibleSprites = this.sceneGraph.scope();
                     this.uiController.subNumObjectsToAdd();
                 }
                 this.renderingSystem.render(visibleSprites);
+            }
+            while (this.uiController.getSpritesToRemove().length > 0) {
+                var sprite = this.uiController.popSpritesToRemove();
+                //sprite.clearSprite();
+                this.sceneGraph.removeAnimatedSprite(sprite);
             }
         }
         /**
@@ -370,7 +368,6 @@ var ResourceManager = function () {
             var spriteToAdd = new AnimatedSprite_1.AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE);
             var newX = posX - animatedSpriteType.getSpriteWidth() / 2;
             var newY = posY - animatedSpriteType.getSpriteHeight() / 2;
-            var randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
             spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
             return spriteToAdd;
         }
@@ -1969,6 +1966,15 @@ var SceneGraph = function () {
             this.animatedSprites.push(sprite);
         }
     }, {
+        key: "removeAnimatedSprite",
+        value: function removeAnimatedSprite(sprite) {
+            var spriteIndex = this.animatedSprites.indexOf(sprite, 0);
+            if (spriteIndex > -1) {
+                console.log("It's being removed");
+                this.animatedSprites.splice(spriteIndex, 1);
+            }
+        }
+    }, {
         key: "getSpriteAt",
         value: function getSpriteAt(testX, testY) {
             var _iteratorNormalCompletion = true;
@@ -2160,6 +2166,12 @@ var AnimatedSprite = function (_SceneObject_1$SceneO) {
     }
 
     _createClass(AnimatedSprite, [{
+        key: "clearSprite",
+        value: function clearSprite() {
+            this.spriteType.zeroSpriteHeight();
+            this.spriteType.zeroSpriteWidth();
+        }
+    }, {
         key: "getAnimationFrameIndex",
         value: function getAnimationFrameIndex() {
             return this.animationFrameIndex;
@@ -2292,9 +2304,19 @@ var AnimatedSpriteType = function () {
             return this.spriteWidth;
         }
     }, {
+        key: "zeroSpriteWidth",
+        value: function zeroSpriteWidth() {
+            this.spriteWidth = 0;
+        }
+    }, {
         key: "getSpriteHeight",
         value: function getSpriteHeight() {
             return this.spriteHeight;
+        }
+    }, {
+        key: "zeroSpriteHeight",
+        value: function zeroSpriteHeight() {
+            this.spriteHeight = 0;
         }
     }, {
         key: "getSpriteSheetTexture",
@@ -2367,6 +2389,16 @@ var UIController = function () {
             }
             _this.spriteToDrag = null;
         };
+        this.doubleClickHandler = function (event) {
+            var mousePressX = event.clientX;
+            var mousePressY = event.clientY;
+            _this.xPos = mousePressX;
+            _this.yPos = mousePressY;
+            var sprite = _this.scene.getSpriteAt(mousePressX, mousePressY);
+            if (sprite != null) {
+                _this.spritesToRemove.push(sprite);
+            }
+        };
     }
 
     _createClass(UIController, [{
@@ -2377,10 +2409,22 @@ var UIController = function () {
             this.dragOffsetX = -1;
             this.dragOffsetY = -1;
             this.numObjectsToAdd = 0;
+            this.spritesToRemove = [];
             var canvas = document.getElementById(canvasId);
             canvas.addEventListener("mousedown", this.mouseDownHandler);
             canvas.addEventListener("mousemove", this.mouseMoveHandler);
             canvas.addEventListener("mouseup", this.mouseUpHandler);
+            canvas.addEventListener("dblclick", this.doubleClickHandler);
+        }
+    }, {
+        key: "getSpritesToRemove",
+        value: function getSpritesToRemove() {
+            return this.spritesToRemove;
+        }
+    }, {
+        key: "popSpritesToRemove",
+        value: function popSpritesToRemove() {
+            return this.spritesToRemove.pop();
         }
     }, {
         key: "getNumObjectsToAdd",
