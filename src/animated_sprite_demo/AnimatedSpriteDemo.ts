@@ -11,6 +11,9 @@ import {WebGLGameRenderingSystem} from '../wolfie2d/rendering/WebGLGameRendering
 import {SceneGraph} from '../wolfie2d/scene/SceneGraph'
 import {AnimatedSprite} from '../wolfie2d/scene/sprite/AnimatedSprite'
 import {AnimatedSpriteType} from '../wolfie2d/scene/sprite/AnimatedSpriteType'
+import { GradientCircleType } from '../wolfie2d/scene/circle/GradientCircleType'
+import { GradientCircle } from '../wolfie2d/scene/circle/GradientCircle'
+import { WebGLGameTexture } from '../wolfie2d/rendering/WebGLGameTexture'
 
 // IN THIS EXAMPLE WE'LL HAVE 2 SPRITE TYPES THAT EACH HAVE THE SAME 2 STATES
 // AND WHERE EACH SPRITE TYPE HAS ITS OWN SPRITE SHEET
@@ -69,12 +72,24 @@ class AnimatedSpriteDemo {
             for (let j = 0; j < 5; j++) {
                 let spriteTypeToUse : string = DEMO_SPRITE_TYPES[i];
                 let animatedSpriteType : AnimatedSpriteType = resourceManager.getAnimatedSpriteTypeById(spriteTypeToUse);
-                let spriteToAdd : AnimatedSprite = new AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE);
+                let spriteToAdd : AnimatedSprite = new AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE, SceneGraph.lastIndex);
+                SceneGraph.lastIndex++;
                 let randomX : number = Math.floor(Math.random() * canvasWidth) - (animatedSpriteType.getSpriteWidth()/2);
                 let randomY : number = Math.floor(Math.random() * canvasHeight) - (animatedSpriteType.getSpriteHeight()/2);
                 spriteToAdd.getPosition().set(randomX, randomY, 0.0, 1.0);
                 scene.addAnimatedSprite(spriteToAdd);
             }
+        }
+
+        //build circles
+        for(let i = 0; i < 5; i++){
+            let type = new GradientCircleType(1, 1);
+            let circle : GradientCircle = new GradientCircle(type, "", SceneGraph.lastIndex);
+            SceneGraph.lastIndex++;
+            let randomX : number = Math.floor(Math.random() * canvasWidth) - 50;
+            let randomY : number = Math.floor(Math.random() * canvasHeight) - 50;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
         }
     }
 

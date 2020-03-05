@@ -3,13 +3,16 @@
  */
 import {TextRenderer} from './TextRenderer'
 import {WebGLGameSpriteRenderer} from './WebGLGameSpriteRenderer'
+import {WebGLGameCircleRenderer} from './WebGLGameCircleRenderer'
 import {AnimatedSprite} from '../scene/sprite/AnimatedSprite'
+import {GradientCircle} from '../scene/circle/GradientCircle'
 import {WebGLGameTexture } from './WebGLGameTexture';
 
 export class WebGLGameRenderingSystem {
     private renderingCanvas : HTMLCanvasElement;
     private webGL : WebGLRenderingContext;
     private spriteRenderer : WebGLGameSpriteRenderer;
+    private circleRenderer : WebGLGameCircleRenderer;
     private textRenderer : TextRenderer;
     private canvasWidth : number;
     private canvasHeight : number;
@@ -61,7 +64,7 @@ export class WebGLGameRenderingSystem {
         // WebGL IS SUPPORTED, SO INIT EVERYTHING THAT USES IT
 
         // MAKE THE CLEAR COLOR BLACK
-        this.setClearColor(0.0, 0.0, 0.0, 1.0);
+        this.setClearColor(1.0, 1.0, 1.0, 1.0);
 
         // ENABLE DEPTH TESTING
         this.webGL.disable(this.webGL.DEPTH_TEST);
@@ -77,6 +80,9 @@ export class WebGLGameRenderingSystem {
         // NOW MAKE THE SHADER FOR DRAWING THIS THING
         this.spriteRenderer = new WebGLGameSpriteRenderer();
         this.spriteRenderer.init(this.webGL);
+
+        this.circleRenderer = new WebGLGameCircleRenderer();
+        this.circleRenderer.init(this.webGL);
         
         // THIS WILL STORE OUR TEXT
         this.textRenderer = new TextRenderer(textCanvasId, "serif", 18, "#FFFF00");
@@ -115,12 +121,16 @@ export class WebGLGameRenderingSystem {
         this.webGL.clearColor(r, g, b, a);
     }
 
-    public render(visibleSet : Array<AnimatedSprite>) : void {
+    public render(visibleSet : Array<AnimatedSprite>, circleSet : Array<GradientCircle>) : void {
         // CLEAR THE CANVAS
         this.webGL.clear(this.webGL.COLOR_BUFFER_BIT | this.webGL.DEPTH_BUFFER_BIT);
         
         // RENDER THE SPRITES ON ONE CANVAS
         this.spriteRenderer.renderAnimatedSprites(this.webGL, this.canvasWidth, this.canvasHeight, visibleSet);
+
+        // RENDER THE CIRCLES ON ONE CANVAS
+        this.circleRenderer.renderGradientCircles(this.webGL, this.canvasWidth, this.canvasHeight, circleSet);
+        
         
         // THEN THE TEXT ON ANOTHER OVERLAPPING CANVAS
         this.textRenderer.render();

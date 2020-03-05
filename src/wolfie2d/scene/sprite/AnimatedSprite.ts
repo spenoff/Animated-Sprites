@@ -6,8 +6,9 @@ export class AnimatedSprite extends SceneObject {
     private state : string;
     private animationFrameIndex : number;
     private frameCounter : number;
+    private indexNum : number;
     
-    public constructor(initSpriteType : AnimatedSpriteType, initState : string) {
+    public constructor(initSpriteType : AnimatedSpriteType, initState : string, initIndexNum : number) {
         super();
         this.spriteType = initSpriteType;
         
@@ -15,11 +16,11 @@ export class AnimatedSprite extends SceneObject {
         this.state = initState;
         this.animationFrameIndex = 0;
         this.frameCounter = 0;
+        this.indexNum = initIndexNum;
     }
 
-    public clearSprite() : void {
-        this.spriteType.zeroSpriteHeight();
-        this.spriteType.zeroSpriteWidth();
+    public getIndexNum(){
+        return this.indexNum;
     }
 
     public getAnimationFrameIndex() : number {

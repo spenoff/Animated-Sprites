@@ -14,17 +14,17 @@ export class GradientCircleFrame {
 }
 
 export class GradientCircleType {
-    private circleSheetTexture : WebGLGameTexture;
+    //private circleSheetTexture : WebGLGameTexture;
     private animations : HashTable<Array<GradientCircleFrame>>;
     private circleWidth : number;
     private circleHeight : number;
 
-    public constructor(initCircleSheetTexture : WebGLGameTexture, 
+    public constructor( 
                 initCircleWidth : number, initCircleHeight : number) {
-        this.circleSheetTexture = initCircleSheetTexture;
+       // this.circleSheetTexture = initCircleSheetTexture;
         this.animations = {};
-        this.circleWidth = initCircleWidth;
-        this.circleHeight = initCircleHeight;
+        this.circleWidth = 100;
+        this.circleHeight = 100;
     }
 
     public addAnimation(state : string) : void {
@@ -32,13 +32,13 @@ export class GradientCircleType {
     }
 
     public addAnimationFrame(state : string, index : number, frameDuration : number) : void {
-        var columns = this.circleSheetTexture.width/this.circleWidth;
-        var rows = this.circleSheetTexture.height/this.circleHeight;
-        var col = index % columns;
-        var row = Math.floor(index /  columns);
-        var left = col * this.circleWidth;
-        var top = row * this.circleHeight;
-        this.animations[state].push(new GradientCircleFrame(left, top, frameDuration));
+      //  var columns = this.circleSheetTexture.width/this.circleWidth;
+       // var rows = this.circleSheetTexture.height/this.circleHeight;
+       // var col = index % columns;
+       // var row = Math.floor(index /  columns);
+       // var left = col * this.circleWidth;
+       // var top = row * this.circleHeight;
+        //this.animations[state].push(new GradientCircleFrame(left, top, frameDuration));
     }
 
     public getCircleWidth() : number {
@@ -49,9 +49,9 @@ export class GradientCircleType {
         return this.circleHeight;
     }
 
-    public getCircleSheetTexture() : WebGLGameTexture {
-        return this.circleSheetTexture;
-    }
+   // public getCircleSheetTexture() : WebGLGameTexture {
+       // return this.circleSheetTexture;
+  //  }
 
     public getAnimation(state : string) : Array<GradientCircleFrame> {
         return this.animations[state];

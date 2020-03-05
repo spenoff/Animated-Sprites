@@ -10,6 +10,7 @@ import {SceneGraph} from './scene/SceneGraph'
 import {AnimatedSprite} from './scene/sprite/AnimatedSprite'
 import {ResourceManager} from './files/ResourceManager'
 import {UIController} from './ui/UIController'
+import { GradientCircle } from './scene/circle/GradientCircle'
 
 export class Game extends GameLoopTemplate {
     private resourceManager : ResourceManager = new ResourceManager();
@@ -50,9 +51,12 @@ export class Game extends GameLoopTemplate {
         // GET THE VISIBLE SET FROM THE SCENE GRAPH
         let visibleSprites : Array<AnimatedSprite>;
         visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
+        let circleSet : Array<GradientCircle>;
+        circleSet = <Array<GradientCircle>>this.sceneGraph.scope2();
+
 
         // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
-        this.renderingSystem.render(visibleSprites);
+        this.renderingSystem.render(visibleSprites, circleSet);
     }
 
     /**
@@ -67,8 +71,9 @@ export class Game extends GameLoopTemplate {
                 this.sceneGraph.addAnimatedSprite(new_sprite);
                 var visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
                 this.uiController.subNumObjectsToAdd();
+
             }
-            this.renderingSystem.render(visibleSprites);
+            this.renderingSystem.render(visibleSprites, []);
         }
         while(this.uiController.getSpritesToRemove().length > 0){
             var sprite = this.uiController.popSpritesToRemove();

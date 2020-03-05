@@ -1,11 +1,20 @@
 import {SceneObject} from './SceneObject'
 import {AnimatedSprite} from './sprite/AnimatedSprite'
+import {GradientCircle} from './circle/GradientCircle'
+import { GradientCircleType } from './circle/GradientCircleType';
 
 export class SceneGraph {
+    static lastIndex : number = 0;
+
     // AND ALL OF THE ANIMATED SPRITES, WHICH ARE NOT STORED
     // SORTED OR IN ANY PARTICULAR ORDER. NOTE THAT ANIMATED SPRITES
     // ARE SCENE OBJECTS
     private animatedSprites : Array<AnimatedSprite>;
+
+    // AND ALL OF THE ANIMATED SPRITES, WHICH ARE NOT STORED
+    // SORTED OR IN ANY PARTICULAR ORDER. NOTE THAT ANIMATED SPRITES
+    // ARE SCENE OBJECTS
+    private gradientCircles : Array<GradientCircle>;
 
     // SET OF VISIBLE OBJECTS, NOTE THAT AT THE MOMENT OUR
     // SCENE GRAPH IS QUITE SIMPLE, SO THIS IS THE SAME AS
@@ -15,6 +24,7 @@ export class SceneGraph {
     public constructor() {
         // DEFAULT CONSTRUCTOR INITIALIZES OUR DATA STRUCTURES
         this.animatedSprites = new Array();
+        this.gradientCircles = new Array();
         this.visibleSet = new Array();
     }
 
@@ -24,6 +34,10 @@ export class SceneGraph {
 
     public addAnimatedSprite(sprite : AnimatedSprite) : void {
         this.animatedSprites.push(sprite);
+    }
+
+    public addGradientCirlce(sprite : GradientCircle) : void {
+        this.gradientCircles.push(sprite);
     }
 
     public removeAnimatedSprite(sprite : AnimatedSprite) : void {
@@ -38,6 +52,14 @@ export class SceneGraph {
         for (let sprite of this.animatedSprites) {
             if (sprite.contains(testX, testY))
                 return sprite;
+        }
+        return null;
+    }
+
+    public getCircleAt(testX : number, testY : number) : GradientCircle {
+        for (let circle of this.gradientCircles) {
+            if (circle.contains(testX, testY))
+                return circle;
         }
         return null;
     }
@@ -64,6 +86,18 @@ export class SceneGraph {
         // PUT ALL THE SCENE OBJECTS INTO THE VISIBLE SET
         for (let sprite of this.animatedSprites) {
             this.visibleSet.push(sprite);
+        }
+
+        return this.visibleSet;
+    }
+
+    public scope2() : Array<SceneObject> {
+        // CLEAR OUT THE OLD
+        this.visibleSet = [];
+
+        // PUT ALL THE SCENE OBJECTS INTO THE VISIBLE SET
+        for (let circle of this.gradientCircles) {
+            this.visibleSet.push(circle);
         }
 
         return this.visibleSet;
