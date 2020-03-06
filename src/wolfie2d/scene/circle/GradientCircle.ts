@@ -58,12 +58,28 @@ export class GradientCircle extends SceneObject {
     //     return this.circleType.getTop(this.state, this.circleColorIndex);
     // }
 
-    // public toString() : string {
-    //     let summary : string =  "{ position: ("
-    //                         +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
-    //                         +   "(state: " + this.getState() + ") "
-    //                         +   "(animationFrameIndex: " + this.getAnimationFrameIndex() + ") "
-    //                         +   "(frameCounter: " + this.getFrameCounter() + ") ";
-    //     return summary;
-    // }
+    public toString() : string {
+        let summary : string;
+        switch(this.state){
+            case "RED" : summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (dist, 0, 0)) "; break;
+            case "BLUE" : summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (0, 0, dist)) "; break;
+            case "GREEN" : summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (0, dist, 0)) "; break;
+            case "CYAN" : summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (0, dist, dist)) "; break;
+            case "YELLOW" : summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (dist, dist, 0)) "; break;
+            default: summary =  "{ position: ("
+            +   this.getPosition().getX() + ", " + this.getPosition().getY() + ") "
+            +   "(color: (dist, 0, dist)) "; break;
+        }
+        return summary;
+    }
 }

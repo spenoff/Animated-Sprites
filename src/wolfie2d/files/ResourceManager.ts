@@ -14,6 +14,7 @@ import {AnimatedSpriteType} from '../scene/sprite/AnimatedSpriteType'
 import { SceneGraph } from '../scene/SceneGraph'
 import { GradientCircleType } from '../scene/circle/GradientCircleType'
 import { GradientCircle } from '../scene/circle/GradientCircle'
+import { UIController } from '../ui/UIController'
 
 //constants assed by me
 const DEMO_SPRITE_TYPES : string[] = [
@@ -120,7 +121,10 @@ export class ResourceManager {
         let newX : number = posX - (animatedSpriteType.getSpriteWidth()/2);
         let newY : number = posY - (animatedSpriteType.getSpriteHeight()/2);
         spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+        UIController.detail_text = spriteToAdd.toString();
+        UIController.focusedSprite = spriteToAdd;
         return spriteToAdd;
+        
     }
 
     public generate_random_circle(posX : number, posY : number, index : number) : GradientCircle{
@@ -144,6 +148,9 @@ export class ResourceManager {
         let newX : number = posX;
         let newY : number = posY;
         spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+
+        UIController.detail_text = spriteToAdd.toString();
+        UIController.focusedSprite = null;
         return spriteToAdd;
     }
 

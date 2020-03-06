@@ -76,7 +76,7 @@ export class WebGLGameRenderingSystem {
         // WebGL IS SUPPORTED, SO INIT EVERYTHING THAT USES IT
 
         // MAKE THE CLEAR COLOR BLACK
-        this.setClearColor(1.0, 1.0, 1.0, 1.0);
+        this.setClearColor(0.0, 0.0, 0.0, 1.0);
 
         // ENABLE DEPTH TESTING
         this.webGL.disable(this.webGL.DEPTH_TEST);

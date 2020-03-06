@@ -6,6 +6,7 @@
  */
 import {GameLoopTemplate} from './loop/GameLoopTemplate'
 import {WebGLGameRenderingSystem} from './rendering/WebGLGameRenderingSystem'
+import {TextToRender} from './rendering/TextRenderer'
 import {SceneGraph} from './scene/SceneGraph'
 import {AnimatedSprite} from './scene/sprite/AnimatedSprite'
 import {ResourceManager} from './files/ResourceManager'
@@ -181,6 +182,22 @@ export class Game extends GameLoopTemplate {
             //sprite.clearSprite();
             this.sceneGraph.removeGradientCircle(circle);
         }
+
+        // if(this.uiController.getShowSpriteText() && this.uiController.lookedAtSprite != null){
+        //     let spriteDetaisls = new TextToRender("Sprite Details", "", 100, 50, function() {
+        //         spriteDetaisls.text = this.uiController.lookedAtSprite.toString();
+        //     });
+        //     let textRenderer = this.renderingSystem.getTextRenderer();
+        //     textRenderer.addTextToRender(spriteDetaisls);
+        // }
+
+        // if(this.uiController.getShowCircleText()  && this.uiController.lookedAtCircle != null){
+        //     let spriteDetaisls = new TextToRender("Circle Details", "", 100, 50, function() {
+        //         spriteDetaisls.text = this.uiController.lookedAtCircle.toString();
+        //     });
+        //     let textRenderer = this.renderingSystem.getTextRenderer();
+        //     textRenderer.addTextToRender(spriteDetaisls);
+        // }
     }  
     
     /**

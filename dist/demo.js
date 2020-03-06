@@ -18,6 +18,7 @@ var SceneGraph_1 = require("../wolfie2d/scene/SceneGraph");
 var AnimatedSprite_1 = require("../wolfie2d/scene/sprite/AnimatedSprite");
 var GradientCircleType_1 = require("../wolfie2d/scene/circle/GradientCircleType");
 var GradientCircle_1 = require("../wolfie2d/scene/circle/GradientCircle");
+var UIController_1 = require("../wolfie2d/ui/UIController");
 // IN THIS EXAMPLE WE'LL HAVE 2 SPRITE TYPES THAT EACH HAVE THE SAME 2 STATES
 // AND WHERE EACH SPRITE TYPE HAS ITS OWN SPRITE SHEET
 var DEMO_SPRITE_TYPES = ['resources/animated_sprites/RedCircleMan.json', 'resources/animated_sprites/MultiColorBlock.json'];
@@ -241,6 +242,10 @@ var AnimatedSpriteDemo = function () {
             });
             var textRenderer = game.getRenderingSystem().getTextRenderer();
             textRenderer.addTextToRender(numSpritesText);
+            var detailText = new TextRenderer_1.TextToRender("Detail Text", "", 20, 30, function () {
+                detailText.text = UIController_1.UIController.detail_text;
+            });
+            textRenderer.addTextToRender(detailText);
         }
     }]);
 
@@ -259,7 +264,7 @@ demo.buildTestScene(game, function () {
     game.start();
 });
 
-},{"../wolfie2d/Game":2,"../wolfie2d/rendering/TextRenderer":8,"../wolfie2d/scene/SceneGraph":20,"../wolfie2d/scene/circle/GradientCircle":22,"../wolfie2d/scene/circle/GradientCircleType":23,"../wolfie2d/scene/sprite/AnimatedSprite":24}],2:[function(require,module,exports){
+},{"../wolfie2d/Game":2,"../wolfie2d/rendering/TextRenderer":8,"../wolfie2d/scene/SceneGraph":20,"../wolfie2d/scene/circle/GradientCircle":22,"../wolfie2d/scene/circle/GradientCircleType":23,"../wolfie2d/scene/sprite/AnimatedSprite":24,"../wolfie2d/ui/UIController":26}],2:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -458,6 +463,20 @@ var Game = function (_GameLoopTemplate_1$G) {
                 //sprite.clearSprite();
                 this.sceneGraph.removeGradientCircle(circle);
             }
+            // if(this.uiController.getShowSpriteText() && this.uiController.lookedAtSprite != null){
+            //     let spriteDetaisls = new TextToRender("Sprite Details", "", 100, 50, function() {
+            //         spriteDetaisls.text = this.uiController.lookedAtSprite.toString();
+            //     });
+            //     let textRenderer = this.renderingSystem.getTextRenderer();
+            //     textRenderer.addTextToRender(spriteDetaisls);
+            // }
+            // if(this.uiController.getShowCircleText()  && this.uiController.lookedAtCircle != null){
+            //     let spriteDetaisls = new TextToRender("Circle Details", "", 100, 50, function() {
+            //         spriteDetaisls.text = this.uiController.lookedAtCircle.toString();
+            //     });
+            //     let textRenderer = this.renderingSystem.getTextRenderer();
+            //     textRenderer.addTextToRender(spriteDetaisls);
+            // }
         }
         /**
          * Updates the FPS counter.
@@ -492,6 +511,7 @@ var AnimatedSpriteType_1 = require("../scene/sprite/AnimatedSpriteType");
 var SceneGraph_1 = require("../scene/SceneGraph");
 var GradientCircleType_1 = require("../scene/circle/GradientCircleType");
 var GradientCircle_1 = require("../scene/circle/GradientCircle");
+var UIController_1 = require("../ui/UIController");
 //constants assed by me
 var DEMO_SPRITE_TYPES = ['resources/animated_sprites/RedCircleMan.json', 'resources/animated_sprites/MultiColorBlock.json'];
 var DEMO_SPRITE_STATES = {
@@ -621,6 +641,8 @@ var ResourceManager = function () {
             var newX = posX - animatedSpriteType.getSpriteWidth() / 2;
             var newY = posY - animatedSpriteType.getSpriteHeight() / 2;
             spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+            UIController_1.UIController.detail_text = spriteToAdd.toString();
+            UIController_1.UIController.focusedSprite = spriteToAdd;
             return spriteToAdd;
         }
     }, {
@@ -657,6 +679,8 @@ var ResourceManager = function () {
             var newX = posX;
             var newY = posY;
             spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+            UIController_1.UIController.detail_text = spriteToAdd.toString();
+            UIController_1.UIController.focusedSprite = null;
             return spriteToAdd;
         }
         // LOADS A NEW JSON FILE AND UPON COMPLETION CALLS THE callback FUNCTION
@@ -735,7 +759,7 @@ var ResourceManager = function () {
 
 exports.ResourceManager = ResourceManager;
 
-},{"../rendering/WebGLGameTexture":18,"../scene/SceneGraph":20,"../scene/circle/GradientCircle":22,"../scene/circle/GradientCircleType":23,"../scene/sprite/AnimatedSprite":24,"../scene/sprite/AnimatedSpriteType":25}],4:[function(require,module,exports){
+},{"../rendering/WebGLGameTexture":18,"../scene/SceneGraph":20,"../scene/circle/GradientCircle":22,"../scene/circle/GradientCircleType":23,"../scene/sprite/AnimatedSprite":24,"../scene/sprite/AnimatedSpriteType":25,"../ui/UIController":26}],4:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -3078,7 +3102,7 @@ var WebGLGameRenderingSystem = function () {
             }
             // WebGL IS SUPPORTED, SO INIT EVERYTHING THAT USES IT
             // MAKE THE CLEAR COLOR BLACK
-            this.setClearColor(1.0, 1.0, 1.0, 1.0);
+            this.setClearColor(0.0, 0.0, 0.0, 1.0);
             // ENABLE DEPTH TESTING
             this.webGL.disable(this.webGL.DEPTH_TEST);
             this.webGL.enable(this.webGL.BLEND);
@@ -3958,6 +3982,40 @@ var GradientCircle = function (_SceneObject_1$SceneO) {
                 return true;
             }
         }
+        /**RENAME THIS METHOD SO IT DENOTES PIXEL LOCATION IN TEXTURE */
+        // public getLeft() : number {
+        //     return this.circleType.getLeft(this.state, this.circleColorIndex);
+        // }
+        // public getTop() : number {
+        //     return this.circleType.getTop(this.state, this.circleColorIndex);
+        // }
+
+    }, {
+        key: "toString",
+        value: function toString() {
+            var summary = void 0;
+            switch (this.state) {
+                case "RED":
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (dist, 0, 0)) ";
+                    break;
+                case "BLUE":
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (0, 0, dist)) ";
+                    break;
+                case "GREEN":
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (0, dist, 0)) ";
+                    break;
+                case "CYAN":
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (0, dist, dist)) ";
+                    break;
+                case "YELLOW":
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (dist, dist, 0)) ";
+                    break;
+                default:
+                    summary = "{ position: (" + this.getPosition().getX() + ", " + this.getPosition().getY() + ") " + "(color: (dist, 0, dist)) ";
+                    break;
+            }
+            return summary;
+        }
     }]);
 
     return GradientCircle;
@@ -4061,6 +4119,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var SceneObject_1 = require("../SceneObject");
+var UIController_1 = require("../../ui/UIController");
 
 var AnimatedSprite = function (_SceneObject_1$SceneO) {
     _inherits(AnimatedSprite, _SceneObject_1$SceneO);
@@ -4125,6 +4184,9 @@ var AnimatedSprite = function (_SceneObject_1$SceneO) {
                 }
                 this.frameCounter = 0;
             }
+            if (this == UIController_1.UIController.focusedSprite) {
+                UIController_1.UIController.detail_text = this.toString();
+            }
         }
     }, {
         key: "contains",
@@ -4166,7 +4228,7 @@ var AnimatedSprite = function (_SceneObject_1$SceneO) {
 
 exports.AnimatedSprite = AnimatedSprite;
 
-},{"../SceneObject":21}],25:[function(require,module,exports){
+},{"../../ui/UIController":26,"../SceneObject":21}],25:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4310,6 +4372,15 @@ var UIController = function () {
                 _this.circleToDrag = circle;
                 _this.dragOffsetX = circle.getPosition().getX() - mousePressX;
                 _this.dragOffsetY = circle.getPosition().getY() - mousePressY;
+                if (sprite != null && circle == null) {
+                    UIController.detail_text = sprite.toString();
+                }
+                if (circle != null) {
+                    UIController.detail_text = circle.toString();
+                    UIController.focusedSprite = null;
+                } else {
+                    UIController.focusedSprite = sprite;
+                }
             }
         };
         this.mouseMoveHandler = function (event) {
@@ -4320,6 +4391,17 @@ var UIController = function () {
             if (_this.circleToDrag != null) {
                 console.log("dragging");
                 _this.circleToDrag.getPosition().set(event.clientX + _this.dragOffsetX, event.clientY + _this.dragOffsetY, _this.circleToDrag.getPosition().getZ(), _this.circleToDrag.getPosition().getW());
+            }
+            var sprite = _this.scene.getSpriteAt(event.clientX, event.clientY);
+            var circle = _this.scene.getCircleAt(event.clientX, event.clientY);
+            if (sprite != null && circle == null) {
+                UIController.detail_text = sprite.toString();
+            }
+            if (circle != null) {
+                UIController.detail_text = circle.toString();
+                UIController.focusedSprite = null;
+            } else {
+                UIController.focusedSprite = sprite;
             }
         };
         this.mouseUpHandler = function (event) {
@@ -4355,6 +4437,8 @@ var UIController = function () {
             this.numObjectsToAdd = 0;
             this.spritesToRemove = [];
             this.circlesToRemove = [];
+            UIController.detail_text = "";
+            UIController.focusedSprite = null;
             var canvas = document.getElementById(canvasId);
             canvas.addEventListener("mousedown", this.mouseDownHandler);
             canvas.addEventListener("mousemove", this.mouseMoveHandler);

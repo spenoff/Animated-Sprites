@@ -1,5 +1,6 @@
 import {SceneObject} from '../SceneObject'
 import {AnimatedSpriteType} from './AnimatedSpriteType'
+import { UIController } from '../../ui/UIController';
 
 export class AnimatedSprite extends SceneObject {
     private spriteType : AnimatedSpriteType;
@@ -57,6 +58,9 @@ export class AnimatedSprite extends SceneObject {
                 this.animationFrameIndex = 0;
             }
             this.frameCounter = 0;
+        }
+        if(this == UIController.focusedSprite){
+            UIController.detail_text = this.toString();
         }
     }
 

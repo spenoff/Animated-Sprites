@@ -14,6 +14,7 @@ import {AnimatedSpriteType} from '../wolfie2d/scene/sprite/AnimatedSpriteType'
 import { GradientCircleType } from '../wolfie2d/scene/circle/GradientCircleType'
 import { GradientCircle } from '../wolfie2d/scene/circle/GradientCircle'
 import { WebGLGameTexture } from '../wolfie2d/rendering/WebGLGameTexture'
+import { UIController } from '../wolfie2d/ui/UIController'
 
 // IN THIS EXAMPLE WE'LL HAVE 2 SPRITE TYPES THAT EACH HAVE THE SAME 2 STATES
 // AND WHERE EACH SPRITE TYPE HAS ITS OWN SPRITE SHEET
@@ -209,7 +210,14 @@ class AnimatedSpriteDemo {
             numSpritesText.text = "Number of Scene Objects: " + sceneGraph.getNumSprites();
         });
         let textRenderer = game.getRenderingSystem().getTextRenderer();
+
         textRenderer.addTextToRender(numSpritesText);
+
+        let detailText = new TextToRender("Detail Text", "", 20, 30, function() {
+            detailText.text = UIController.detail_text;
+        });
+
+        textRenderer.addTextToRender(detailText);
     }
 }
 

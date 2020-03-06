@@ -2,6 +2,7 @@
  * This provides responses to UI input.
  */
 import {AnimatedSprite} from "../scene/sprite/AnimatedSprite"
+import {AnimatedSpriteType} from "../scene/sprite/AnimatedSpriteType"
 import {GradientCircle} from "../scene/circle/GradientCircle"
 import {SceneGraph} from "../scene/SceneGraph"
 import { GradientCircleType } from "../scene/circle/GradientCircleType";
@@ -17,6 +18,8 @@ export class UIController {
     private yPos : number;
     private spritesToRemove : Array<AnimatedSprite>;
     private circlesToRemove : Array<GradientCircle>;
+    static detail_text : string;
+    static focusedSprite : AnimatedSprite;
 
 
     public constructor() {}
@@ -29,6 +32,10 @@ export class UIController {
         this.numObjectsToAdd = 0;
         this.spritesToRemove = [];
         this.circlesToRemove = [];
+
+        UIController.detail_text = "";
+        UIController.focusedSprite = null;
+
 
         let canvas : HTMLCanvasElement = <HTMLCanvasElement>document.getElementById(canvasId);
         canvas.addEventListener("mousedown", this.mouseDownHandler);
@@ -73,6 +80,14 @@ export class UIController {
             this.circleToDrag = circle;
             this.dragOffsetX = circle.getPosition().getX() - mousePressX;
             this.dragOffsetY = circle.getPosition().getY() - mousePressY;
+
+            if(sprite != null && circle == null){
+                UIController.detail_text = sprite.toString();
+            }
+            if(circle != null){
+                UIController.detail_text = circle.toString();
+                UIController.focusedSprite = null;
+            }else{UIController.focusedSprite = sprite;}
         }
     }
     
@@ -93,6 +108,16 @@ export class UIController {
                                                 this.circleToDrag.getPosition().getZ(), 
                                                 this.circleToDrag.getPosition().getW());
         }
+        
+        let sprite : AnimatedSprite = this.scene.getSpriteAt(event.clientX, event.clientY);
+        let circle : GradientCircle = this.scene.getCircleAt(event.clientX, event.clientY);
+        if(sprite != null && circle == null){
+            UIController.detail_text = sprite.toString();
+        }
+        if(circle != null){
+            UIController.detail_text = circle.toString();
+            UIController.focusedSprite = null;
+        }else{UIController.focusedSprite = sprite;}
     }
 
     public mouseUpHandler = (event : MouseEvent) : void => {
