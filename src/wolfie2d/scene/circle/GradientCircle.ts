@@ -4,9 +4,6 @@ import {GradientCircleType} from './GradientCircleType'
 export class GradientCircle extends SceneObject {
     private circleType : GradientCircleType;
     private state : string;
-    private colorR : number;
-    private colorB : number;
-    private colorG : number;
     private indexNum : number;
 
     public constructor(initCircleType : GradientCircleType, initState : string, initIndexNum : number) {
@@ -28,30 +25,6 @@ export class GradientCircle extends SceneObject {
 
     public getState() : string {
         return this.state;
-    }
-
-    public getColorR() : number {
-        return this.colorR;
-    }
-
-    public getColorB() : number {
-        return this.colorB;
-    }
-
-    public getColorG() : number {
-        return this.colorG;
-    }
-
-    public setColorR(newR : number) : void {
-        this.colorR = newR;
-    }
-
-    public setColorB(newB : number) : void {
-        this.colorB = newB;
-    }
-
-    public setColorG(newG : number) : void {
-        this.colorG = newG;
     }
 
     public setState(initState : string) : void {

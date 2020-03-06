@@ -24,7 +24,7 @@ var SpriteDefaults = {
     INDEX_OF_FIRST_VERTEX: 0
 };
 
-export class WebGLGameCircleRenderer {
+export class WebGLGameYellowCircleRenderer {
     private shader : WebGLGameShader;
     private vertexTexCoordBuffer : WebGLBuffer;
 
@@ -74,7 +74,7 @@ export class WebGLGameCircleRenderer {
             '  if (dist > R) {\n' +
             '    discard;\n' +
             '  }\n' +
-            '  gl_FragColor = vec4(dist, 0, dist, alpha);\n' + //TODO might need randomly generated variables here
+            '  gl_FragColor = vec4(dist, dist, 0, alpha);\n' + //TODO might need randomly generated variables here
             '}\n';
             // '#ifdef GL_ES\n' +
             // 'precision mediump float;\n' +
@@ -116,7 +116,7 @@ export class WebGLGameCircleRenderer {
         this.spriteScale = new Vector3();
     }
 
-    public renderGradientCircles(  webGL : WebGLRenderingContext, 
+    public renderRedCircles(  webGL : WebGLRenderingContext, 
                             canvasWidth : number, 
                             canvasHeight : number, 
                             visibleSet : Array<GradientCircle>) : void {

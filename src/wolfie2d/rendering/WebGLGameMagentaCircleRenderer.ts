@@ -24,7 +24,7 @@ var SpriteDefaults = {
     INDEX_OF_FIRST_VERTEX: 0
 };
 
-export class WebGLGameCircleRenderer {
+export class WebGLGameMagentaCircleRenderer {
     private shader : WebGLGameShader;
     private vertexTexCoordBuffer : WebGLBuffer;
 
@@ -116,7 +116,7 @@ export class WebGLGameCircleRenderer {
         this.spriteScale = new Vector3();
     }
 
-    public renderGradientCircles(  webGL : WebGLRenderingContext, 
+    public renderRedCircles(  webGL : WebGLRenderingContext, 
                             canvasWidth : number, 
                             canvasHeight : number, 
                             visibleSet : Array<GradientCircle>) : void {

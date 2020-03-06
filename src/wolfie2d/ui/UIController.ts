@@ -48,15 +48,16 @@ export class UIController {
         console.log("mousePressY: " + mousePressY);
         
         if(sprite != null && circle != null){
-            console.log("sprite: " + sprite + "Index: " + sprite.getIndexNum().toString());
-            console.log("circle: " + circle + "Index: " +circle.getIndexNum().toString());
-            if(sprite.getIndexNum() < circle.getIndexNum()){
-                console.log("This is happening");
-                sprite = null;
-            }else{
-                console.log("and This is happening");
-                circle = null;
-            }
+            // console.log("sprite: " + sprite + "Index: " + sprite.getIndexNum().toString());
+            // console.log("circle: " + circle + "Index: " +circle.getIndexNum().toString());
+            // if(sprite.getIndexNum() <= circle.getIndexNum()){
+            //     console.log("This is happening");
+            //     sprite = null;
+            // }else{
+            //     console.log("and This is happening");
+            //     circle = null;
+            // }
+            sprite = null;
         }
         if (sprite != null) {
             console.log("dragging sprite");
@@ -126,6 +127,14 @@ export class UIController {
 
     public popSpritesToRemove() : AnimatedSprite {
         return this.spritesToRemove.pop();
+    }
+
+    public getCirclesToRemove() : Array<GradientCircle> {
+        return this.circlesToRemove;
+    }
+
+    public popCirclesToRemove() : GradientCircle {
+        return this.circlesToRemove.pop();
     }
 
     public getNumObjectsToAdd() : number{

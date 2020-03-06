@@ -37,6 +37,8 @@ export class WebGLGameShader {
         return null;
     }
 
+    
+
     public createShaderProgram(webGL : WebGLRenderingContext, vShader : WebGLShader, fShader : WebGLShader) : WebGLProgram {
         // MAKE THE GLSL SHADER PROGRAM
         let programToCreate = webGL.createProgram();

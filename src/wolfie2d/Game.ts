@@ -43,6 +43,48 @@ export class Game extends GameLoopTemplate {
        //setTimeout(this.update1, 1000);
     }
 
+    private isRed(g : GradientCircle) : boolean{
+        if(g.getState() == "RED"){
+            return true;
+        }
+        return false;
+    }
+
+    private isBlue(g : GradientCircle) : boolean{
+        if(g.getState() === "BLUE"){
+            return true;
+        }
+        return false;
+    }
+
+    private isGreen(g : GradientCircle) : boolean{
+        if(g.getState() === "GREEN"){
+            return true;
+        }
+        return false;
+    }
+
+    private isYellow(g : GradientCircle) : boolean{
+        if(g.getState() === "YELLOW"){
+            return true;
+        }
+        return false;
+    }
+
+    private isCyan(g : GradientCircle) : boolean{
+        if(g.getState() === "CYAN"){
+            return true;
+        }
+        return false;
+    }
+
+    private isMagenta(g : GradientCircle) : boolean{
+        if(g.getState() === "MAGENTA"){
+            return true;
+        }
+        return false;
+    }
+
     /*
      * This draws the game. Note that we are not currently using the 
      * interpolation value, but could once physics is involved.
@@ -53,10 +95,27 @@ export class Game extends GameLoopTemplate {
         visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
         let circleSet : Array<GradientCircle>;
         circleSet = <Array<GradientCircle>>this.sceneGraph.scope2();
+        let redSet : Array<GradientCircle>;
+        redSet = circleSet.filter(this.isRed);
+
+        let blueSet : Array<GradientCircle>;
+        blueSet = circleSet.filter(this.isBlue);
+
+        let greenSet : Array<GradientCircle>;
+        greenSet = circleSet.filter(this.isGreen);
+
+        let yellowSet : Array<GradientCircle>;
+        yellowSet = circleSet.filter(this.isYellow);
+
+        let cyanSet : Array<GradientCircle>;
+        cyanSet = circleSet.filter(this.isCyan);
+
+        let magentaSet : Array<GradientCircle>;
+        magentaSet = circleSet.filter(this.isMagenta);
 
 
         // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
-        this.renderingSystem.render(visibleSprites, circleSet);
+        this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
     }
 
     /**
@@ -73,12 +132,18 @@ export class Game extends GameLoopTemplate {
                 this.uiController.subNumObjectsToAdd();
 
             }
-            this.renderingSystem.render(visibleSprites, []);
+            this.renderingSystem.render(visibleSprites, [], [], [], [], [], []);
         }
         while(this.uiController.getSpritesToRemove().length > 0){
             var sprite = this.uiController.popSpritesToRemove();
             //sprite.clearSprite();
             this.sceneGraph.removeAnimatedSprite(sprite);
+        }
+
+        while(this.uiController.getCirclesToRemove().length > 0){
+            var circle = this.uiController.popCirclesToRemove();
+            //sprite.clearSprite();
+            this.sceneGraph.removeGradientCircle(circle);
         }
     }
 

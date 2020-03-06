@@ -74,22 +74,58 @@ var AnimatedSpriteDemo = function () {
                     var animatedSpriteType = resourceManager.getAnimatedSpriteTypeById(spriteTypeToUse);
                     var spriteToAdd = new AnimatedSprite_1.AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE, SceneGraph_1.SceneGraph.lastIndex);
                     SceneGraph_1.SceneGraph.lastIndex++;
-                    var randomX = Math.floor(Math.random() * canvasWidth) - animatedSpriteType.getSpriteWidth() / 2;
-                    var randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
-                    spriteToAdd.getPosition().set(randomX, randomY, 0.0, 1.0);
+                    var _randomX = Math.floor(Math.random() * canvasWidth) - animatedSpriteType.getSpriteWidth() / 2;
+                    var _randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
+                    spriteToAdd.getPosition().set(_randomX, _randomY, 0.0, 1.0);
                     scene.addAnimatedSprite(spriteToAdd);
                 }
             }
             //build circles
-            for (var _i = 0; _i < 5; _i++) {
-                var type = new GradientCircleType_1.GradientCircleType(1, 1);
-                var circle = new GradientCircle_1.GradientCircle(type, "", SceneGraph_1.SceneGraph.lastIndex);
-                SceneGraph_1.SceneGraph.lastIndex++;
-                var _randomX = Math.floor(Math.random() * canvasWidth) - 50;
-                var _randomY = Math.floor(Math.random() * canvasHeight) - 50;
-                circle.getPosition().set(_randomX, _randomY, 0.0, 1.0);
-                scene.addGradientCirlce(circle);
-            }
+            // for(let i = 0; i < 4; i++){
+            //     let type = new GradientCircleType(1, 1);
+            //     let circle : GradientCircle = new GradientCircle(type, "RED", SceneGraph.lastIndex);
+            //     SceneGraph.lastIndex++;
+            //     let randomX : number = Math.floor(Math.random() * canvasWidth) - 50;
+            //     let randomY : number = Math.floor(Math.random() * canvasHeight) - 50;
+            //     circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            //     scene.addGradientCirlce(circle);
+            // }
+            //build red circle
+            var type = new GradientCircleType_1.GradientCircleType(1, 1);
+            var circle = new GradientCircle_1.GradientCircle(type, "RED", SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            var randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            var randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
+            type = new GradientCircleType_1.GradientCircleType(1, 1);
+            circle = new GradientCircle_1.GradientCircle(type, "BLUE", SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
+            type = new GradientCircleType_1.GradientCircleType(1, 1);
+            circle = new GradientCircle_1.GradientCircle(type, "GREEN", SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
+            type = new GradientCircleType_1.GradientCircleType(1, 1);
+            circle = new GradientCircle_1.GradientCircle(type, "YELLOW", SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
+            type = new GradientCircleType_1.GradientCircleType(1, 1);
+            circle = new GradientCircle_1.GradientCircle(type, "CYAN", SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            scene.addGradientCirlce(circle);
         }
         /*
          * Builds all the text to be displayed in the application.
@@ -122,7 +158,7 @@ demo.buildTestScene(game, function () {
     game.start();
 });
 
-},{"../wolfie2d/Game":2,"../wolfie2d/rendering/TextRenderer":8,"../wolfie2d/scene/SceneGraph":14,"../wolfie2d/scene/circle/GradientCircle":16,"../wolfie2d/scene/circle/GradientCircleType":17,"../wolfie2d/scene/sprite/AnimatedSprite":18}],2:[function(require,module,exports){
+},{"../wolfie2d/Game":2,"../wolfie2d/rendering/TextRenderer":8,"../wolfie2d/scene/SceneGraph":20,"../wolfie2d/scene/circle/GradientCircle":22,"../wolfie2d/scene/circle/GradientCircleType":23,"../wolfie2d/scene/sprite/AnimatedSprite":24}],2:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -184,9 +220,57 @@ var Game = function (_GameLoopTemplate_1$G) {
         }
     }, {
         key: "begin",
-        value: function begin() {}
-        //setTimeout(this.update1, 1000);
-
+        value: function begin() {
+            //setTimeout(this.update1, 1000);
+        }
+    }, {
+        key: "isRed",
+        value: function isRed(g) {
+            if (g.getState() == "RED") {
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "isBlue",
+        value: function isBlue(g) {
+            if (g.getState() === "BLUE") {
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "isGreen",
+        value: function isGreen(g) {
+            if (g.getState() === "GREEN") {
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "isYellow",
+        value: function isYellow(g) {
+            if (g.getState() === "YELLOW") {
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "isCyan",
+        value: function isCyan(g) {
+            if (g.getState() === "CYAN") {
+                return true;
+            }
+            return false;
+        }
+    }, {
+        key: "isMagenta",
+        value: function isMagenta(g) {
+            if (g.getState() === "MAGENTA") {
+                return true;
+            }
+            return false;
+        }
         /*
          * This draws the game. Note that we are not currently using the
          * interpolation value, but could once physics is involved.
@@ -200,8 +284,20 @@ var Game = function (_GameLoopTemplate_1$G) {
             visibleSprites = this.sceneGraph.scope();
             var circleSet = void 0;
             circleSet = this.sceneGraph.scope2();
+            var redSet = void 0;
+            redSet = circleSet.filter(this.isRed);
+            var blueSet = void 0;
+            blueSet = circleSet.filter(this.isBlue);
+            var greenSet = void 0;
+            greenSet = circleSet.filter(this.isGreen);
+            var yellowSet = void 0;
+            yellowSet = circleSet.filter(this.isYellow);
+            var cyanSet = void 0;
+            cyanSet = circleSet.filter(this.isCyan);
+            var magentaSet = void 0;
+            magentaSet = circleSet.filter(this.isMagenta);
             // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
-            this.renderingSystem.render(visibleSprites, circleSet);
+            this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
         }
         /**
          * Updates the scene.
@@ -219,12 +315,17 @@ var Game = function (_GameLoopTemplate_1$G) {
                     var visibleSprites = this.sceneGraph.scope();
                     this.uiController.subNumObjectsToAdd();
                 }
-                this.renderingSystem.render(visibleSprites, []);
+                this.renderingSystem.render(visibleSprites, [], [], [], [], [], []);
             }
             while (this.uiController.getSpritesToRemove().length > 0) {
                 var sprite = this.uiController.popSpritesToRemove();
                 //sprite.clearSprite();
                 this.sceneGraph.removeAnimatedSprite(sprite);
+            }
+            while (this.uiController.getCirclesToRemove().length > 0) {
+                var circle = this.uiController.popCirclesToRemove();
+                //sprite.clearSprite();
+                this.sceneGraph.removeGradientCircle(circle);
             }
         }
         /**
@@ -246,7 +347,7 @@ var Game = function (_GameLoopTemplate_1$G) {
 
 exports.Game = Game;
 
-},{"./files/ResourceManager":3,"./loop/GameLoopTemplate":4,"./rendering/WebGLGameRenderingSystem":10,"./scene/SceneGraph":14,"./ui/UIController":20}],3:[function(require,module,exports){
+},{"./files/ResourceManager":3,"./loop/GameLoopTemplate":4,"./rendering/WebGLGameRenderingSystem":15,"./scene/SceneGraph":20,"./ui/UIController":26}],3:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -465,7 +566,7 @@ var ResourceManager = function () {
 
 exports.ResourceManager = ResourceManager;
 
-},{"../rendering/WebGLGameTexture":13,"../scene/SceneGraph":14,"../scene/sprite/AnimatedSprite":18,"../scene/sprite/AnimatedSpriteType":19}],4:[function(require,module,exports){
+},{"../rendering/WebGLGameTexture":18,"../scene/SceneGraph":20,"../scene/sprite/AnimatedSprite":24,"../scene/sprite/AnimatedSpriteType":25}],4:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1596,6 +1697,200 @@ var SpriteDefaults = {
     INDEX_OF_FIRST_VERTEX: 0
 };
 
+var WebGLGameBlueCircleRenderer = function () {
+    function WebGLGameBlueCircleRenderer() {
+        _classCallCheck(this, WebGLGameBlueCircleRenderer);
+    }
+
+    _createClass(WebGLGameBlueCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(0, 0, dist, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameBlueCircleRenderer;
+}();
+
+exports.WebGLGameBlueCircleRenderer = WebGLGameBlueCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],10:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
 var WebGLGameCircleRenderer = function () {
     function WebGLGameCircleRenderer() {
         _classCallCheck(this, WebGLGameCircleRenderer);
@@ -1620,7 +1915,7 @@ var WebGLGameCircleRenderer = function () {
             // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
             // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
             // '}\n';
-            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(0, dist, 0, alpha);\n' + //TODO might need randomly generated variables here
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(dist, 0, dist, alpha);\n' + //TODO might need randomly generated variables here
             '}\n';
             // '#ifdef GL_ES\n' +
             // 'precision mediump float;\n' +
@@ -1761,7 +2056,783 @@ var WebGLGameCircleRenderer = function () {
 
 exports.WebGLGameCircleRenderer = WebGLGameCircleRenderer;
 
-},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":11}],10:[function(require,module,exports){
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],11:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
+var WebGLGameCyanCircleRenderer = function () {
+    function WebGLGameCyanCircleRenderer() {
+        _classCallCheck(this, WebGLGameCyanCircleRenderer);
+    }
+
+    _createClass(WebGLGameCyanCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(0, dist, dist, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameCyanCircleRenderer;
+}();
+
+exports.WebGLGameCyanCircleRenderer = WebGLGameCyanCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],12:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
+var WebGLGameGreenCircleRenderer = function () {
+    function WebGLGameGreenCircleRenderer() {
+        _classCallCheck(this, WebGLGameGreenCircleRenderer);
+    }
+
+    _createClass(WebGLGameGreenCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(0, dist, 0, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameGreenCircleRenderer;
+}();
+
+exports.WebGLGameGreenCircleRenderer = WebGLGameGreenCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],13:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
+var WebGLGameMagentaCircleRenderer = function () {
+    function WebGLGameMagentaCircleRenderer() {
+        _classCallCheck(this, WebGLGameMagentaCircleRenderer);
+    }
+
+    _createClass(WebGLGameMagentaCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(dist, 0, dist, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameMagentaCircleRenderer;
+}();
+
+exports.WebGLGameMagentaCircleRenderer = WebGLGameMagentaCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],14:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
+var WebGLGameRedCircleRenderer = function () {
+    function WebGLGameRedCircleRenderer() {
+        _classCallCheck(this, WebGLGameRedCircleRenderer);
+    }
+
+    _createClass(WebGLGameRedCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(dist, 0, 0, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameRedCircleRenderer;
+}();
+
+exports.WebGLGameRedCircleRenderer = WebGLGameRedCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],15:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1775,6 +2846,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var TextRenderer_1 = require("./TextRenderer");
 var WebGLGameSpriteRenderer_1 = require("./WebGLGameSpriteRenderer");
 var WebGLGameCircleRenderer_1 = require("./WebGLGameCircleRenderer");
+var WebGLGameRedCircleRenderer_1 = require("./WebGLGameRedCircleRenderer");
+var WebGLGameBlueCircleRenderer_1 = require("./WebGLGameBlueCircleRenderer");
+var WebGLGameGreenCircleRenderer_1 = require("./WebGLGameGreenCircleRenderer");
+var WebGLGameCyanCircleRenderer_1 = require("./WebGLGameCyanCircleRenderer");
+var WebGLGameYellowCircleRenderer_1 = require("./WebGLGameYellowCircleRenderer");
+var WebGLGameMagentaCircleRenderer_1 = require("./WebGLGameMagentaCircleRenderer");
 
 var WebGLGameRenderingSystem = function () {
     function WebGLGameRenderingSystem() {
@@ -1846,6 +2923,18 @@ var WebGLGameRenderingSystem = function () {
             this.spriteRenderer.init(this.webGL);
             this.circleRenderer = new WebGLGameCircleRenderer_1.WebGLGameCircleRenderer();
             this.circleRenderer.init(this.webGL);
+            this.redcircleRenderer = new WebGLGameRedCircleRenderer_1.WebGLGameRedCircleRenderer();
+            this.redcircleRenderer.init(this.webGL);
+            this.bluecircleRenderer = new WebGLGameBlueCircleRenderer_1.WebGLGameBlueCircleRenderer();
+            this.bluecircleRenderer.init(this.webGL);
+            this.greencircleRenderer = new WebGLGameGreenCircleRenderer_1.WebGLGameGreenCircleRenderer();
+            this.greencircleRenderer.init(this.webGL);
+            this.cyancircleRenderer = new WebGLGameCyanCircleRenderer_1.WebGLGameCyanCircleRenderer();
+            this.cyancircleRenderer.init(this.webGL);
+            this.yellowcircleRenderer = new WebGLGameYellowCircleRenderer_1.WebGLGameYellowCircleRenderer();
+            this.yellowcircleRenderer.init(this.webGL);
+            this.magentacircleRenderer = new WebGLGameMagentaCircleRenderer_1.WebGLGameMagentaCircleRenderer();
+            this.magentacircleRenderer.init(this.webGL);
             // THIS WILL STORE OUR TEXT
             this.textRenderer = new TextRenderer_1.TextRenderer(textCanvasId, "serif", 18, "#FFFF00");
         }
@@ -1879,13 +2968,19 @@ var WebGLGameRenderingSystem = function () {
         }
     }, {
         key: "render",
-        value: function render(visibleSet, circleSet) {
+        value: function render(visibleSet, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet) {
             // CLEAR THE CANVAS
             this.webGL.clear(this.webGL.COLOR_BUFFER_BIT | this.webGL.DEPTH_BUFFER_BIT);
             // RENDER THE SPRITES ON ONE CANVAS
             this.spriteRenderer.renderAnimatedSprites(this.webGL, this.canvasWidth, this.canvasHeight, visibleSet);
             // RENDER THE CIRCLES ON ONE CANVAS
-            this.circleRenderer.renderGradientCircles(this.webGL, this.canvasWidth, this.canvasHeight, circleSet);
+            //this.circleRenderer.renderGradientCircles(this.webGL, this.canvasWidth, this.canvasHeight, circleSet);
+            this.redcircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, redSet);
+            this.bluecircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, blueSet);
+            this.greencircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, greenSet);
+            this.cyancircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, cyanSet);
+            this.yellowcircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, yellowSet);
+            this.magentacircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, magentaSet);
             // THEN THE TEXT ON ANOTHER OVERLAPPING CANVAS
             this.textRenderer.render();
         }
@@ -1896,7 +2991,7 @@ var WebGLGameRenderingSystem = function () {
 
 exports.WebGLGameRenderingSystem = WebGLGameRenderingSystem;
 
-},{"./TextRenderer":8,"./WebGLGameCircleRenderer":9,"./WebGLGameSpriteRenderer":12}],11:[function(require,module,exports){
+},{"./TextRenderer":8,"./WebGLGameBlueCircleRenderer":9,"./WebGLGameCircleRenderer":10,"./WebGLGameCyanCircleRenderer":11,"./WebGLGameGreenCircleRenderer":12,"./WebGLGameMagentaCircleRenderer":13,"./WebGLGameRedCircleRenderer":14,"./WebGLGameSpriteRenderer":17,"./WebGLGameYellowCircleRenderer":19}],16:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -1972,7 +3067,7 @@ var WebGLGameShader = function () {
 
 exports.WebGLGameShader = WebGLGameShader;
 
-},{}],12:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2141,7 +3236,7 @@ var WebGLGameSpriteRenderer = function () {
 
 exports.WebGLGameSpriteRenderer = WebGLGameSpriteRenderer;
 
-},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":11}],13:[function(require,module,exports){
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],18:[function(require,module,exports){
 "use strict";
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -2154,7 +3249,201 @@ var WebGLGameTexture = function WebGLGameTexture() {
 
 exports.WebGLGameTexture = WebGLGameTexture;
 
-},{}],14:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
+"use strict";
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var WebGLGameShader_1 = require("./WebGLGameShader");
+var MathUtilities_1 = require("../math/MathUtilities");
+var Matrix_1 = require("../math/Matrix");
+var Vector3_1 = require("../math/Vector3");
+var SpriteDefaults = {
+    A_POSITION: "a_Position",
+    A_VALUE_TO_INTERPOLATE: "a_ValueToInterpolate",
+    A_TEX_COORD: "a_TexCoord",
+    U_SPRITE_TRANSFORM: "u_SpriteTransform",
+    U_TEX_COORD_FACTOR: "u_TexCoordFactor",
+    U_TEX_COORD_SHIFT: "u_TexCoordShift",
+    U_SAMPLER: "u_Sampler",
+    NUM_VERTICES: 4,
+    FLOATS_PER_VERTEX: 2,
+    FLOATS_PER_TEXTURE_COORDINATE: 2,
+    TOTAL_BYTES: 16,
+    VERTEX_POSITION_OFFSET: 0,
+    TEXTURE_COORDINATE_OFFSET: 8,
+    INDEX_OF_FIRST_VERTEX: 0
+};
+
+var WebGLGameYellowCircleRenderer = function () {
+    function WebGLGameYellowCircleRenderer() {
+        _classCallCheck(this, WebGLGameYellowCircleRenderer);
+    }
+
+    _createClass(WebGLGameYellowCircleRenderer, [{
+        key: "init",
+        value: function init(webGL) {
+            this.shader = new WebGLGameShader_1.WebGLGameShader();
+            var vertexShaderSource = 'precision highp float;\n\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            //'uniform vec2 ' + CircleDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' + 'attribute vec2 ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + 'varying vec2 val;\n' + 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' + 'void main() {\n' + '  val = ' + SpriteDefaults.A_VALUE_TO_INTERPOLATE + ';\n' + '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' + '}\n';
+            // 'uniform mat4 ' + SpriteDefaults.U_SPRITE_TRANSFORM + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // 'uniform vec2 ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // 'attribute vec4 ' + SpriteDefaults.A_POSITION + ';\n' +
+            // 'attribute vec2 ' + SpriteDefaults.A_TEX_COORD + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_Position = ' + SpriteDefaults.U_SPRITE_TRANSFORM + ' * ' + SpriteDefaults.A_POSITION + ';\n' +
+            // '  vec2 tempTexCoord = ' + SpriteDefaults.A_TEX_COORD + ' * ' + SpriteDefaults.U_TEX_COORD_FACTOR + ';\n' +
+            // '  v_TexCoord = tempTexCoord + ' + SpriteDefaults.U_TEX_COORD_SHIFT + ';\n' +
+            // '}\n';
+            var fragmentShaderSource = 'precision highp float;\n' + 'varying vec2 val;\n' + 'void main() {\n' + '  float R = 0.4;\n' + '  float dist = sqrt(dot(val,val));\n' + '  float alpha = 1.0;\n' + '  if (dist > R) {\n' + '    discard;\n' + '  }\n' + '  gl_FragColor = vec4(dist, dist, 0, alpha);\n' + //TODO might need randomly generated variables here
+            '}\n';
+            // '#ifdef GL_ES\n' +
+            // 'precision mediump float;\n' +
+            // '#endif\n' +
+            // 'uniform sampler2D ' + SpriteDefaults.U_SAMPLER + ';\n' +
+            // 'varying vec2 v_TexCoord;\n' +
+            // 'void main() {\n' +
+            // '  gl_FragColor = texture2D(' + SpriteDefaults.U_SAMPLER + ', v_TexCoord);\n' +
+            // '}\n';
+            this.shader.init(webGL, vertexShaderSource, fragmentShaderSource);
+            // GET THE webGL OBJECT TO USE
+            var verticesTexCoords = new Float32Array([-0.5, 0.5, 0.0, 0.0, -0.5, -0.5, 0.0, 1.0, 0.5, 0.5, 1.0, 0.0, 0.5, -0.5, 1.0, 1.0]);
+            // CREATE THE BUFFER ON THE GPU
+            this.vertexTexCoordBuffer = webGL.createBuffer();
+            // BIND THE BUFFER TO BE VERTEX DATA
+            webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // AND SEND THE DATA TO THE BUFFER WE CREATED ON THE GPU
+            webGL.bufferData(webGL.ARRAY_BUFFER, verticesTexCoords, webGL.STATIC_DRAW);
+            // SETUP THE SHADER ATTRIBUTES AND UNIFORMS
+            this.webGLAttributeLocations = {};
+            this.webGLUniformLocations = {};
+            this.loadAttributeLocations(webGL, [SpriteDefaults.A_POSITION, SpriteDefaults.A_TEX_COORD]);
+            this.loadUniformLocations(webGL, [SpriteDefaults.U_SPRITE_TRANSFORM, SpriteDefaults.U_SAMPLER, SpriteDefaults.U_TEX_COORD_FACTOR, SpriteDefaults.U_TEX_COORD_SHIFT]);
+            // WE'LL USE THESE FOR TRANSOFMRING OBJECTS WHEN WE DRAW THEM
+            this.spriteTransform = new Matrix_1.Matrix(4, 4);
+            this.spriteTranslate = new Vector3_1.Vector3();
+            this.spriteRotate = new Vector3_1.Vector3();
+            this.spriteScale = new Vector3_1.Vector3();
+        }
+    }, {
+        key: "renderRedCircles",
+        value: function renderRedCircles(webGL, canvasWidth, canvasHeight, visibleSet) {
+            // SELECT THE ANIMATED SPRITE RENDERING SHADER PROGRAM FOR USE
+            var shaderProgramToUse = this.shader.getProgram();
+            webGL.useProgram(shaderProgramToUse);
+            // AND THEN RENDER EACH ONE
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = visibleSet[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var sprite = _step.value;
+
+                    this.renderAnimatedSprite(webGL, canvasWidth, canvasHeight, sprite);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+        }
+    }, {
+        key: "loadAttributeLocations",
+        value: function loadAttributeLocations(webGL, attributeLocationNames) {
+            for (var i = 0; i < attributeLocationNames.length; i++) {
+                var locationName = attributeLocationNames[i];
+                var location = webGL.getAttribLocation(this.shader.getProgram(), locationName);
+                this.webGLAttributeLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "loadUniformLocations",
+        value: function loadUniformLocations(webGL, uniformLocationNames) {
+            for (var i = 0; i < uniformLocationNames.length; i++) {
+                var locationName = uniformLocationNames[i];
+                var location = webGL.getUniformLocation(this.shader.getProgram(), locationName);
+                //console.log(location.)
+                this.webGLUniformLocations[locationName] = location;
+            }
+        }
+    }, {
+        key: "renderAnimatedSprite",
+        value: function renderAnimatedSprite(webGL, canvasWidth, canvasHeight, circle) {
+            // let spriteType : GradientCircle = circle.getCircleType();
+            //let texture : WebGLGameTexture = spriteType.getSpriteSheetTexture();
+            // CALCULATE HOW MUCH TO TRANSLATE THE QUAD PER THE SPRITE POSITION
+            var spriteWidth = 100;
+            var spriteHeight = 100;
+            var spriteXInPixels = circle.getPosition().getX() + spriteWidth / 2;
+            var spriteYInPixels = circle.getPosition().getY() + spriteHeight / 2;
+            var spriteXTranslate = (spriteXInPixels - canvasWidth / 2) / (canvasWidth / 2);
+            var spriteYTranslate = (spriteYInPixels - canvasHeight / 2) / (canvasHeight / 2);
+            this.spriteTranslate.setX(spriteXTranslate);
+            this.spriteTranslate.setY(-spriteYTranslate);
+            // CALCULATE HOW MUCH TO SCALE THE QUAD PER THE SPRITE SIZE
+            var defaultWidth = canvasWidth / 2;
+            var defaultHeight = canvasHeight / 2;
+            var scaleX = 250 / defaultWidth;
+            var scaleY = 250 / defaultHeight;
+            this.spriteScale.setX(scaleX);
+            this.spriteScale.setY(scaleY);
+            // @todo - COMBINE THIS WITH THE ROTATE AND SCALE VALUES FROM THE SPRITE
+            MathUtilities_1.MathUtilities.identity(this.spriteTransform);
+            MathUtilities_1.MathUtilities.model(this.spriteTransform, this.spriteTranslate, this.spriteRotate, this.spriteScale);
+            // FIGURE OUT THE TEXTURE COORDINATE FACTOR AND SHIFT
+            // let texCoordFactorX : number = spriteWidth/texture.width;
+            // let texCoordFactorY : number = spriteHeight/texture.height;
+            // let spriteLeft : number = sprite.getLeft();
+            // let spriteTop : number = sprite.getTop();
+            // let texCoordShiftX : number = spriteLeft/texture.width;
+            // let texCoordShiftY : number = spriteTop/texture.height;   
+            // USE THE ATTRIBUTES
+            // webGL.bindBuffer(webGL.ARRAY_BUFFER, this.vertexTexCoordBuffer);
+            // webGL.bindTexture(webGL.TEXTURE_2D, texture.webGLTexture);
+            // HOOK UP THE ATTRIBUTES
+            var a_PositionLocation = this.webGLAttributeLocations[SpriteDefaults.A_POSITION];
+            webGL.vertexAttribPointer(a_PositionLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.VERTEX_POSITION_OFFSET);
+            webGL.enableVertexAttribArray(a_PositionLocation);
+            //  let a_TexCoordLocation : GLuint = this.webGLAttributeLocations[SpriteDefaults.A_TEX_COORD];
+            // webGL.vertexAttribPointer(a_TexCoordLocation, SpriteDefaults.FLOATS_PER_TEXTURE_COORDINATE, webGL.FLOAT, false, SpriteDefaults.TOTAL_BYTES, SpriteDefaults.TEXTURE_COORDINATE_OFFSET);
+            // webGL.enableVertexAttribArray(a_TexCoordLocation);
+            // USE THE UNIFORMS
+            var u_SpriteTransformLocation = this.webGLUniformLocations[SpriteDefaults.U_SPRITE_TRANSFORM];
+            webGL.uniformMatrix4fv(u_SpriteTransformLocation, false, this.spriteTransform.getData());
+            //  let u_SamplerLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_SAMPLER];
+            //webGL.uniform1i(u_SamplerLocation, texture.webGLTextureId);
+            //     let u_TexCoordFactorLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_FACTOR];
+            //    // webGL.uniform2f(u_TexCoordFactorLocation, texCoordFactorX, texCoordFactorY);
+            //     let u_TexCoordShiftLocation : WebGLUniformLocation = this.webGLUniformLocations[SpriteDefaults.U_TEX_COORD_SHIFT];
+            //     webGL.uniform2f(u_TexCoordShiftLocation, texCoordShiftX, texCoordShiftY);
+            // DRAW THE SPRITE AS A TRIANGLE STRIP USING 4 VERTICES, STARTING AT THE START OF THE ARRAY (index 0)
+            webGL.drawArrays(webGL.TRIANGLE_STRIP, SpriteDefaults.INDEX_OF_FIRST_VERTEX, SpriteDefaults.NUM_VERTICES);
+        }
+    }]);
+
+    return WebGLGameYellowCircleRenderer;
+}();
+
+exports.WebGLGameYellowCircleRenderer = WebGLGameYellowCircleRenderer;
+
+},{"../math/MathUtilities":5,"../math/Matrix":6,"../math/Vector3":7,"./WebGLGameShader":16}],20:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2170,6 +3459,7 @@ var SceneGraph = function () {
         // DEFAULT CONSTRUCTOR INITIALIZES OUR DATA STRUCTURES
         this.animatedSprites = new Array();
         this.gradientCircles = new Array();
+        this.redCircles = new Array();
         this.visibleSet = new Array();
     }
 
@@ -2189,12 +3479,26 @@ var SceneGraph = function () {
             this.gradientCircles.push(sprite);
         }
     }, {
+        key: "addRedCirlce",
+        value: function addRedCirlce(sprite) {
+            this.redCircles.push(sprite);
+        }
+    }, {
         key: "removeAnimatedSprite",
         value: function removeAnimatedSprite(sprite) {
             var spriteIndex = this.animatedSprites.indexOf(sprite, 0);
             if (spriteIndex > -1) {
                 console.log("It's being removed");
                 this.animatedSprites.splice(spriteIndex, 1);
+            }
+        }
+    }, {
+        key: "removeGradientCircle",
+        value: function removeGradientCircle(sprite) {
+            var spriteIndex = this.gradientCircles.indexOf(sprite, 0);
+            if (spriteIndex > -1) {
+                console.log("It's being removed");
+                this.gradientCircles.splice(spriteIndex, 1);
             }
         }
     }, {
@@ -2369,7 +3673,7 @@ var SceneGraph = function () {
 exports.SceneGraph = SceneGraph;
 SceneGraph.lastIndex = 0;
 
-},{}],15:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2422,7 +3726,7 @@ var SceneObject = function () {
 
 exports.SceneObject = SceneObject;
 
-},{"../math/Vector3":7}],16:[function(require,module,exports){
+},{"../math/Vector3":7}],22:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2466,36 +3770,6 @@ var GradientCircle = function (_SceneObject_1$SceneO) {
             return this.state;
         }
     }, {
-        key: "getColorR",
-        value: function getColorR() {
-            return this.colorR;
-        }
-    }, {
-        key: "getColorB",
-        value: function getColorB() {
-            return this.colorB;
-        }
-    }, {
-        key: "getColorG",
-        value: function getColorG() {
-            return this.colorG;
-        }
-    }, {
-        key: "setColorR",
-        value: function setColorR(newR) {
-            this.colorR = newR;
-        }
-    }, {
-        key: "setColorB",
-        value: function setColorB(newB) {
-            this.colorB = newB;
-        }
-    }, {
-        key: "setColorG",
-        value: function setColorG(newG) {
-            this.colorG = newG;
-        }
-    }, {
         key: "setState",
         value: function setState(initState) {
             this.state = initState;
@@ -2522,7 +3796,7 @@ var GradientCircle = function (_SceneObject_1$SceneO) {
 
 exports.GradientCircle = GradientCircle;
 
-},{"../SceneObject":15}],17:[function(require,module,exports){
+},{"../SceneObject":21}],23:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2547,8 +3821,8 @@ var GradientCircleType = function () {
 
         // this.circleSheetTexture = initCircleSheetTexture;
         this.animations = {};
-        this.circleWidth = 100;
-        this.circleHeight = 100;
+        this.circleWidth = 200;
+        this.circleHeight = 200;
     }
 
     _createClass(GradientCircleType, [{
@@ -2605,7 +3879,7 @@ var GradientCircleType = function () {
 
 exports.GradientCircleType = GradientCircleType;
 
-},{}],18:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2723,7 +3997,7 @@ var AnimatedSprite = function (_SceneObject_1$SceneO) {
 
 exports.AnimatedSprite = AnimatedSprite;
 
-},{"../SceneObject":15}],19:[function(require,module,exports){
+},{"../SceneObject":21}],25:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2817,7 +4091,7 @@ var AnimatedSpriteType = function () {
 
 exports.AnimatedSpriteType = AnimatedSpriteType;
 
-},{}],20:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -2842,15 +4116,16 @@ var UIController = function () {
             console.log("mousePressX: " + mousePressX);
             console.log("mousePressY: " + mousePressY);
             if (sprite != null && circle != null) {
-                console.log("sprite: " + sprite + "Index: " + sprite.getIndexNum().toString());
-                console.log("circle: " + circle + "Index: " + circle.getIndexNum().toString());
-                if (sprite.getIndexNum() < circle.getIndexNum()) {
-                    console.log("This is happening");
-                    sprite = null;
-                } else {
-                    console.log("and This is happening");
-                    circle = null;
-                }
+                // console.log("sprite: " + sprite + "Index: " + sprite.getIndexNum().toString());
+                // console.log("circle: " + circle + "Index: " +circle.getIndexNum().toString());
+                // if(sprite.getIndexNum() <= circle.getIndexNum()){
+                //     console.log("This is happening");
+                //     sprite = null;
+                // }else{
+                //     console.log("and This is happening");
+                //     circle = null;
+                // }
+                sprite = null;
             }
             if (sprite != null) {
                 console.log("dragging sprite");
@@ -2929,6 +4204,16 @@ var UIController = function () {
         key: "popSpritesToRemove",
         value: function popSpritesToRemove() {
             return this.spritesToRemove.pop();
+        }
+    }, {
+        key: "getCirclesToRemove",
+        value: function getCirclesToRemove() {
+            return this.circlesToRemove;
+        }
+    }, {
+        key: "popCirclesToRemove",
+        value: function popCirclesToRemove() {
+            return this.circlesToRemove.pop();
         }
     }, {
         key: "getNumObjectsToAdd",

@@ -23,8 +23,8 @@ export class GradientCircleType {
                 initCircleWidth : number, initCircleHeight : number) {
        // this.circleSheetTexture = initCircleSheetTexture;
         this.animations = {};
-        this.circleWidth = 100;
-        this.circleHeight = 100;
+        this.circleWidth = 200;
+        this.circleHeight = 200;
     }
 
     public addAnimation(state : string) : void {

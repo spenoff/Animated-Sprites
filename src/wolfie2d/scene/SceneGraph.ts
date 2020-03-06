@@ -15,6 +15,7 @@ export class SceneGraph {
     // SORTED OR IN ANY PARTICULAR ORDER. NOTE THAT ANIMATED SPRITES
     // ARE SCENE OBJECTS
     private gradientCircles : Array<GradientCircle>;
+    private redCircles : Array<GradientCircle>;
 
     // SET OF VISIBLE OBJECTS, NOTE THAT AT THE MOMENT OUR
     // SCENE GRAPH IS QUITE SIMPLE, SO THIS IS THE SAME AS
@@ -25,6 +26,7 @@ export class SceneGraph {
         // DEFAULT CONSTRUCTOR INITIALIZES OUR DATA STRUCTURES
         this.animatedSprites = new Array();
         this.gradientCircles = new Array();
+        this.redCircles = new Array();
         this.visibleSet = new Array();
     }
 
@@ -40,11 +42,23 @@ export class SceneGraph {
         this.gradientCircles.push(sprite);
     }
 
+    public addRedCirlce(sprite : GradientCircle) : void {
+        this.redCircles.push(sprite);
+    }
+
     public removeAnimatedSprite(sprite : AnimatedSprite) : void {
         var spriteIndex = this.animatedSprites.indexOf(sprite, 0);
         if(spriteIndex > -1) {
             console.log("It's being removed");
             this.animatedSprites.splice(spriteIndex, 1);
+        }
+    }
+
+    public removeGradientCircle(sprite : GradientCircle) : void {
+        var spriteIndex = this.gradientCircles.indexOf(sprite, 0);
+        if(spriteIndex > -1) {
+            console.log("It's being removed");
+            this.gradientCircles.splice(spriteIndex, 1);
         }
     }
 

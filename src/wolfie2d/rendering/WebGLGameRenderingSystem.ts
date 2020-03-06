@@ -4,6 +4,12 @@
 import {TextRenderer} from './TextRenderer'
 import {WebGLGameSpriteRenderer} from './WebGLGameSpriteRenderer'
 import {WebGLGameCircleRenderer} from './WebGLGameCircleRenderer'
+import {WebGLGameRedCircleRenderer} from './WebGLGameRedCircleRenderer'
+import {WebGLGameBlueCircleRenderer} from './WebGLGameBlueCircleRenderer'
+import {WebGLGameGreenCircleRenderer} from './WebGLGameGreenCircleRenderer'
+import {WebGLGameCyanCircleRenderer} from './WebGLGameCyanCircleRenderer'
+import {WebGLGameYellowCircleRenderer} from './WebGLGameYellowCircleRenderer'
+import {WebGLGameMagentaCircleRenderer} from './WebGLGameMagentaCircleRenderer'
 import {AnimatedSprite} from '../scene/sprite/AnimatedSprite'
 import {GradientCircle} from '../scene/circle/GradientCircle'
 import {WebGLGameTexture } from './WebGLGameTexture';
@@ -13,6 +19,12 @@ export class WebGLGameRenderingSystem {
     private webGL : WebGLRenderingContext;
     private spriteRenderer : WebGLGameSpriteRenderer;
     private circleRenderer : WebGLGameCircleRenderer;
+    private redcircleRenderer : WebGLGameRedCircleRenderer;
+    private bluecircleRenderer : WebGLGameBlueCircleRenderer;
+    private greencircleRenderer : WebGLGameGreenCircleRenderer;
+    private cyancircleRenderer : WebGLGameCyanCircleRenderer;
+    private yellowcircleRenderer : WebGLGameYellowCircleRenderer;
+    private magentacircleRenderer : WebGLGameMagentaCircleRenderer;
     private textRenderer : TextRenderer;
     private canvasWidth : number;
     private canvasHeight : number;
@@ -83,6 +95,24 @@ export class WebGLGameRenderingSystem {
 
         this.circleRenderer = new WebGLGameCircleRenderer();
         this.circleRenderer.init(this.webGL);
+
+        this.redcircleRenderer = new WebGLGameRedCircleRenderer();
+        this.redcircleRenderer.init(this.webGL);
+
+        this.bluecircleRenderer = new WebGLGameBlueCircleRenderer();
+        this.bluecircleRenderer.init(this.webGL);
+
+        this.greencircleRenderer = new WebGLGameGreenCircleRenderer();
+        this.greencircleRenderer.init(this.webGL);
+
+        this.cyancircleRenderer = new WebGLGameCyanCircleRenderer();
+        this.cyancircleRenderer.init(this.webGL);
+
+        this.yellowcircleRenderer = new WebGLGameYellowCircleRenderer();
+        this.yellowcircleRenderer.init(this.webGL);
+
+        this.magentacircleRenderer = new WebGLGameMagentaCircleRenderer();
+        this.magentacircleRenderer.init(this.webGL);
         
         // THIS WILL STORE OUR TEXT
         this.textRenderer = new TextRenderer(textCanvasId, "serif", 18, "#FFFF00");
@@ -121,7 +151,7 @@ export class WebGLGameRenderingSystem {
         this.webGL.clearColor(r, g, b, a);
     }
 
-    public render(visibleSet : Array<AnimatedSprite>, circleSet : Array<GradientCircle>) : void {
+    public render(visibleSet : Array<AnimatedSprite>, redSet : Array<GradientCircle>, blueSet : Array<GradientCircle>, greenSet : Array<GradientCircle>, cyanSet : Array<GradientCircle>, yellowSet : Array<GradientCircle>, magentaSet : Array<GradientCircle>) : void {
         // CLEAR THE CANVAS
         this.webGL.clear(this.webGL.COLOR_BUFFER_BIT | this.webGL.DEPTH_BUFFER_BIT);
         
@@ -129,7 +159,19 @@ export class WebGLGameRenderingSystem {
         this.spriteRenderer.renderAnimatedSprites(this.webGL, this.canvasWidth, this.canvasHeight, visibleSet);
 
         // RENDER THE CIRCLES ON ONE CANVAS
-        this.circleRenderer.renderGradientCircles(this.webGL, this.canvasWidth, this.canvasHeight, circleSet);
+    //this.circleRenderer.renderGradientCircles(this.webGL, this.canvasWidth, this.canvasHeight, circleSet);
+
+        this.redcircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, redSet);
+
+        this.bluecircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, blueSet);
+
+        this.greencircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, greenSet);
+
+        this.cyancircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, cyanSet);
+
+        this.yellowcircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, yellowSet);
+
+        this.magentacircleRenderer.renderRedCircles(this.webGL, this.canvasWidth, this.canvasHeight, magentaSet);
         
         
         // THEN THE TEXT ON ANOTHER OVERLAPPING CANVAS

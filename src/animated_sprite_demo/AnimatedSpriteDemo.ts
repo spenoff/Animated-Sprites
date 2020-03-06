@@ -82,15 +82,55 @@ class AnimatedSpriteDemo {
         }
 
         //build circles
-        for(let i = 0; i < 5; i++){
-            let type = new GradientCircleType(1, 1);
-            let circle : GradientCircle = new GradientCircle(type, "", SceneGraph.lastIndex);
-            SceneGraph.lastIndex++;
-            let randomX : number = Math.floor(Math.random() * canvasWidth) - 50;
-            let randomY : number = Math.floor(Math.random() * canvasHeight) - 50;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
-        }
+        // for(let i = 0; i < 4; i++){
+        //     let type = new GradientCircleType(1, 1);
+        //     let circle : GradientCircle = new GradientCircle(type, "RED", SceneGraph.lastIndex);
+        //     SceneGraph.lastIndex++;
+        //     let randomX : number = Math.floor(Math.random() * canvasWidth) - 50;
+        //     let randomY : number = Math.floor(Math.random() * canvasHeight) - 50;
+        //     circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        //     scene.addGradientCirlce(circle);
+        // }
+        //build red circle
+        let type = new GradientCircleType(1, 1);
+        let circle : GradientCircle = new GradientCircle(type, "RED", SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        let randomX : number = Math.floor(Math.random() * canvasWidth) - 25;
+        let randomY : number = Math.floor(Math.random() * canvasHeight) - 25;
+        circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        scene.addGradientCirlce(circle);
+
+        type = new GradientCircleType(1, 1);
+        circle = new GradientCircle(type, "BLUE", SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        randomX = Math.floor(Math.random() * canvasWidth) - 25;
+        randomY = Math.floor(Math.random() * canvasHeight) - 25;
+        circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        scene.addGradientCirlce(circle);
+
+        type = new GradientCircleType(1, 1);
+        circle = new GradientCircle(type, "GREEN", SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        randomX = Math.floor(Math.random() * canvasWidth) - 25;
+        randomY = Math.floor(Math.random() * canvasHeight) - 25;
+        circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        scene.addGradientCirlce(circle);
+
+        type = new GradientCircleType(1, 1);
+        circle = new GradientCircle(type, "YELLOW", SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        randomX = Math.floor(Math.random() * canvasWidth) - 25;
+        randomY = Math.floor(Math.random() * canvasHeight) - 25;
+        circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        scene.addGradientCirlce(circle);
+
+        type = new GradientCircleType(1, 1);
+        circle = new GradientCircle(type, "CYAN", SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        randomX = Math.floor(Math.random() * canvasWidth) - 25;
+        randomY = Math.floor(Math.random() * canvasHeight) - 25;
+        circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+        scene.addGradientCirlce(circle);
     }
 
     /*
