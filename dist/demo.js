@@ -136,7 +136,7 @@ var AnimatedSpriteDemo = function () {
         value: function buildText(game) {
             var sceneGraph = game.getSceneGraph();
             var numSpritesText = new TextRenderer_1.TextToRender("Num Sprites", "", 20, 50, function () {
-                numSpritesText.text = "Number of Sprites: " + sceneGraph.getNumSprites();
+                numSpritesText.text = "Number of Scene Objects: " + sceneGraph.getNumSprites();
             });
             var textRenderer = game.getRenderingSystem().getTextRenderer();
             textRenderer.addTextToRender(numSpritesText);
@@ -3466,7 +3466,7 @@ var SceneGraph = function () {
     _createClass(SceneGraph, [{
         key: "getNumSprites",
         value: function getNumSprites() {
-            return this.animatedSprites.length;
+            return this.animatedSprites.length + this.gradientCircles.length;
         }
     }, {
         key: "addAnimatedSprite",
