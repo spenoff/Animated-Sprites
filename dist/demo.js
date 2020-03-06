@@ -74,9 +74,9 @@ var AnimatedSpriteDemo = function () {
                     var animatedSpriteType = resourceManager.getAnimatedSpriteTypeById(spriteTypeToUse);
                     var spriteToAdd = new AnimatedSprite_1.AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE, SceneGraph_1.SceneGraph.lastIndex);
                     SceneGraph_1.SceneGraph.lastIndex++;
-                    var _randomX = Math.floor(Math.random() * canvasWidth) - animatedSpriteType.getSpriteWidth() / 2;
-                    var _randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
-                    spriteToAdd.getPosition().set(_randomX, _randomY, 0.0, 1.0);
+                    var randomX = Math.floor(Math.random() * canvasWidth) - animatedSpriteType.getSpriteWidth() / 2;
+                    var randomY = Math.floor(Math.random() * canvasHeight) - animatedSpriteType.getSpriteHeight() / 2;
+                    spriteToAdd.getPosition().set(randomX, randomY, 0.0, 1.0);
                     scene.addAnimatedSprite(spriteToAdd);
                 }
             }
@@ -90,42 +90,143 @@ var AnimatedSpriteDemo = function () {
             //     circle.getPosition().set(randomX, randomY, 0.0, 1.0);
             //     scene.addGradientCirlce(circle);
             // }
+            var rdone = false;
+            var bdone = false;
+            var gdone = false;
+            var cdone = false;
+            var ydone = false;
+            var mdone = false;
+            //GENERATE 5 DIFFERENTLY COLORED CIRCLES RANDOMLY
+            for (var _i = 0; _i < 5; _i++) {
+                var rnum = Math.floor(Math.random() * 6) + 1;
+                switch (rnum) {
+                    case 1:
+                        if (rdone === false) {
+                            rdone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                    case 2:
+                        if (bdone === false) {
+                            bdone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                    case 3:
+                        if (gdone === false) {
+                            gdone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                    case 4:
+                        if (cdone === false) {
+                            cdone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                    case 5:
+                        if (ydone === false) {
+                            ydone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                    default:
+                        if (mdone === false) {
+                            mdone = true;
+                        } else {
+                            _i--;
+                        }
+                        break;
+                }
+            }
             //build red circle
-            var type = new GradientCircleType_1.GradientCircleType(1, 1);
-            var circle = new GradientCircle_1.GradientCircle(type, "RED", SceneGraph_1.SceneGraph.lastIndex);
-            SceneGraph_1.SceneGraph.lastIndex++;
-            var randomX = Math.floor(Math.random() * canvasWidth) - 25;
-            var randomY = Math.floor(Math.random() * canvasHeight) - 25;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
-            type = new GradientCircleType_1.GradientCircleType(1, 1);
-            circle = new GradientCircle_1.GradientCircle(type, "BLUE", SceneGraph_1.SceneGraph.lastIndex);
-            SceneGraph_1.SceneGraph.lastIndex++;
-            randomX = Math.floor(Math.random() * canvasWidth) - 25;
-            randomY = Math.floor(Math.random() * canvasHeight) - 25;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
-            type = new GradientCircleType_1.GradientCircleType(1, 1);
-            circle = new GradientCircle_1.GradientCircle(type, "GREEN", SceneGraph_1.SceneGraph.lastIndex);
-            SceneGraph_1.SceneGraph.lastIndex++;
-            randomX = Math.floor(Math.random() * canvasWidth) - 25;
-            randomY = Math.floor(Math.random() * canvasHeight) - 25;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
-            type = new GradientCircleType_1.GradientCircleType(1, 1);
-            circle = new GradientCircle_1.GradientCircle(type, "YELLOW", SceneGraph_1.SceneGraph.lastIndex);
-            SceneGraph_1.SceneGraph.lastIndex++;
-            randomX = Math.floor(Math.random() * canvasWidth) - 25;
-            randomY = Math.floor(Math.random() * canvasHeight) - 25;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
-            type = new GradientCircleType_1.GradientCircleType(1, 1);
-            circle = new GradientCircle_1.GradientCircle(type, "CYAN", SceneGraph_1.SceneGraph.lastIndex);
-            SceneGraph_1.SceneGraph.lastIndex++;
-            randomX = Math.floor(Math.random() * canvasWidth) - 25;
-            randomY = Math.floor(Math.random() * canvasHeight) - 25;
-            circle.getPosition().set(randomX, randomY, 0.0, 1.0);
-            scene.addGradientCirlce(circle);
+            if (rdone) {
+                var type = new GradientCircleType_1.GradientCircleType(1, 1);
+                var circle = new GradientCircle_1.GradientCircle(type, "RED", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY = Math.floor(Math.random() * canvasHeight) - 25;
+                circle.getPosition().set(_randomX, _randomY, 0.0, 1.0);
+                scene.addGradientCirlce(circle);
+            }
+            if (bdone) {
+                var _type = new GradientCircleType_1.GradientCircleType(1, 1);
+                var _circle = new GradientCircle_1.GradientCircle(_type, "BLUE", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX2 = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY2 = Math.floor(Math.random() * canvasHeight) - 25;
+                _circle.getPosition().set(_randomX2, _randomY2, 0.0, 1.0);
+                scene.addGradientCirlce(_circle);
+            }
+            if (gdone) {
+                var _type2 = new GradientCircleType_1.GradientCircleType(1, 1);
+                var _circle2 = new GradientCircle_1.GradientCircle(_type2, "GREEN", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX3 = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY3 = Math.floor(Math.random() * canvasHeight) - 25;
+                _circle2.getPosition().set(_randomX3, _randomY3, 0.0, 1.0);
+                scene.addGradientCirlce(_circle2);
+            }
+            if (cdone) {
+                var _type3 = new GradientCircleType_1.GradientCircleType(1, 1);
+                var _circle3 = new GradientCircle_1.GradientCircle(_type3, "CYAN", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX4 = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY4 = Math.floor(Math.random() * canvasHeight) - 25;
+                _circle3.getPosition().set(_randomX4, _randomY4, 0.0, 1.0);
+                scene.addGradientCirlce(_circle3);
+            }
+            if (ydone) {
+                var _type4 = new GradientCircleType_1.GradientCircleType(1, 1);
+                var _circle4 = new GradientCircle_1.GradientCircle(_type4, "YELLOW", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX5 = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY5 = Math.floor(Math.random() * canvasHeight) - 25;
+                _circle4.getPosition().set(_randomX5, _randomY5, 0.0, 1.0);
+                scene.addGradientCirlce(_circle4);
+            }
+            if (mdone) {
+                var _type5 = new GradientCircleType_1.GradientCircleType(1, 1);
+                var _circle5 = new GradientCircle_1.GradientCircle(_type5, "MAGENTA", SceneGraph_1.SceneGraph.lastIndex);
+                SceneGraph_1.SceneGraph.lastIndex++;
+                var _randomX6 = Math.floor(Math.random() * canvasWidth) - 25;
+                var _randomY6 = Math.floor(Math.random() * canvasHeight) - 25;
+                _circle5.getPosition().set(_randomX6, _randomY6, 0.0, 1.0);
+                scene.addGradientCirlce(_circle5);
+            }
+            // type = new GradientCircleType(1, 1);
+            // circle = new GradientCircle(type, "BLUE", SceneGraph.lastIndex);
+            // SceneGraph.lastIndex++;
+            // randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            // randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            // circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            // scene.addGradientCirlce(circle);
+            // type = new GradientCircleType(1, 1);
+            // circle = new GradientCircle(type, "GREEN", SceneGraph.lastIndex);
+            // SceneGraph.lastIndex++;
+            // randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            // randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            // circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            // scene.addGradientCirlce(circle);
+            // type = new GradientCircleType(1, 1);
+            // circle = new GradientCircle(type, "YELLOW", SceneGraph.lastIndex);
+            // SceneGraph.lastIndex++;
+            // randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            // randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            // circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            // scene.addGradientCirlce(circle);
+            // type = new GradientCircleType(1, 1);
+            // circle = new GradientCircle(type, "CYAN", SceneGraph.lastIndex);
+            // SceneGraph.lastIndex++;
+            // randomX = Math.floor(Math.random() * canvasWidth) - 25;
+            // randomY = Math.floor(Math.random() * canvasHeight) - 25;
+            // circle.getPosition().set(randomX, randomY, 0.0, 1.0);
+            // scene.addGradientCirlce(circle);
         }
         /*
          * Builds all the text to be displayed in the application.
