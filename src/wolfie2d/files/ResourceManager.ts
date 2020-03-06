@@ -12,6 +12,8 @@ import {WebGLGameTexture} from '../rendering/WebGLGameTexture'
 import {AnimatedSprite} from '../scene/sprite/AnimatedSprite'
 import {AnimatedSpriteType} from '../scene/sprite/AnimatedSpriteType'
 import { SceneGraph } from '../scene/SceneGraph'
+import { GradientCircleType } from '../scene/circle/GradientCircleType'
+import { GradientCircle } from '../scene/circle/GradientCircle'
 
 //constants assed by me
 const DEMO_SPRITE_TYPES : string[] = [
@@ -106,17 +108,41 @@ export class ResourceManager {
     // PRIVATE HELPER METHODS
 
     //public helper methods
-    public generate_random_sprite(posX : number, posY : number) : AnimatedSprite{
+    public generate_random_sprite(posX : number, posY : number, index : number) : AnimatedSprite{
         let canvasWidth : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).width;
         let canvasHeight : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).height;
 
 
-        let spriteTypeToUse : string = DEMO_SPRITE_TYPES[0];
+        let spriteTypeToUse : string = DEMO_SPRITE_TYPES[index];
         let animatedSpriteType : AnimatedSpriteType = this.getAnimatedSpriteTypeById(spriteTypeToUse);
         let spriteToAdd : AnimatedSprite = new AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE, SceneGraph.lastIndex);
         SceneGraph.lastIndex++;
         let newX : number = posX - (animatedSpriteType.getSpriteWidth()/2);
         let newY : number = posY - (animatedSpriteType.getSpriteHeight()/2);
+        spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+        return spriteToAdd;
+    }
+
+    public generate_random_circle(posX : number, posY : number, index : number) : GradientCircle{
+        let canvasWidth : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).width;
+        let canvasHeight : number = (<HTMLCanvasElement>document.getElementById("game_canvas")).height;
+
+
+        let spriteTypeToUse : string ;
+        switch(index){
+            case 3: spriteTypeToUse = "RED"; break;
+            case 4: spriteTypeToUse = "BLUE"; break;
+            case 5: spriteTypeToUse = "GREEN"; break;
+            case 6: spriteTypeToUse = "CYAN"; break;
+            case 7: spriteTypeToUse = "YELLOW"; break;
+            case 8: spriteTypeToUse = "MAGENTA"; break;
+            default: spriteTypeToUse = "MAGENTA"; break;
+
+        }
+        let spriteToAdd : GradientCircle = new GradientCircle(new GradientCircleType(1,1), spriteTypeToUse, SceneGraph.lastIndex);
+        SceneGraph.lastIndex++;
+        let newX : number = posX;
+        let newY : number = posY;
         spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
         return spriteToAdd;
     }

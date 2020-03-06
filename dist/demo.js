@@ -299,6 +299,11 @@ var Game = function (_GameLoopTemplate_1$G) {
             // RENDER THE VISIBLE SET, WHICH SHOULD ALL BE RENDERABLE
             this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
         }
+    }, {
+        key: "randOneToEight",
+        value: function randOneToEight() {
+            return Math.floor(Math.random() * 8) + 1;
+        }
         /**
          * Updates the scene.
          */
@@ -310,12 +315,37 @@ var Game = function (_GameLoopTemplate_1$G) {
             var to_add = this.uiController.getNumObjectsToAdd();
             if (to_add > 0) {
                 for (var i = 0; i < to_add; i++) {
-                    var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos());
-                    this.sceneGraph.addAnimatedSprite(new_sprite);
+                    var rnum = this.randOneToEight();
+                    switch (rnum) {
+                        case 1:
+                        case 2:
+                            var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos(), rnum);
+                            this.sceneGraph.addAnimatedSprite(new_sprite);
+                            this.uiController.subNumObjectsToAdd();
+                            break;
+                        default:
+                            var rcirc = this.resourceManager.generate_random_circle(this.uiController.getXPos(), this.uiController.getYPos(), rnum);
+                            this.sceneGraph.addGradientCirlce(rcirc);
+                            this.uiController.subNumObjectsToAdd();
+                            break;
+                    }
                     var visibleSprites = this.sceneGraph.scope();
-                    this.uiController.subNumObjectsToAdd();
+                    var circleSet = void 0;
+                    circleSet = this.sceneGraph.scope2();
+                    var redSet = void 0;
+                    redSet = circleSet.filter(this.isRed);
+                    var blueSet = void 0;
+                    blueSet = circleSet.filter(this.isBlue);
+                    var greenSet = void 0;
+                    greenSet = circleSet.filter(this.isGreen);
+                    var yellowSet = void 0;
+                    yellowSet = circleSet.filter(this.isYellow);
+                    var cyanSet = void 0;
+                    cyanSet = circleSet.filter(this.isCyan);
+                    var magentaSet = void 0;
+                    magentaSet = circleSet.filter(this.isMagenta);
+                    this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
                 }
-                this.renderingSystem.render(visibleSprites, [], [], [], [], [], []);
             }
             while (this.uiController.getSpritesToRemove().length > 0) {
                 var sprite = this.uiController.popSpritesToRemove();
@@ -359,6 +389,8 @@ var WebGLGameTexture_1 = require("../rendering/WebGLGameTexture");
 var AnimatedSprite_1 = require("../scene/sprite/AnimatedSprite");
 var AnimatedSpriteType_1 = require("../scene/sprite/AnimatedSpriteType");
 var SceneGraph_1 = require("../scene/SceneGraph");
+var GradientCircleType_1 = require("../scene/circle/GradientCircleType");
+var GradientCircle_1 = require("../scene/circle/GradientCircle");
 //constants assed by me
 var DEMO_SPRITE_TYPES = ['resources/animated_sprites/RedCircleMan.json', 'resources/animated_sprites/MultiColorBlock.json'];
 var DEMO_SPRITE_STATES = {
@@ -478,15 +510,51 @@ var ResourceManager = function () {
 
     }, {
         key: "generate_random_sprite",
-        value: function generate_random_sprite(posX, posY) {
+        value: function generate_random_sprite(posX, posY, index) {
             var canvasWidth = document.getElementById("game_canvas").width;
             var canvasHeight = document.getElementById("game_canvas").height;
-            var spriteTypeToUse = DEMO_SPRITE_TYPES[0];
+            var spriteTypeToUse = DEMO_SPRITE_TYPES[index];
             var animatedSpriteType = this.getAnimatedSpriteTypeById(spriteTypeToUse);
             var spriteToAdd = new AnimatedSprite_1.AnimatedSprite(animatedSpriteType, DEMO_SPRITE_STATES.FORWARD_STATE, SceneGraph_1.SceneGraph.lastIndex);
             SceneGraph_1.SceneGraph.lastIndex++;
             var newX = posX - animatedSpriteType.getSpriteWidth() / 2;
             var newY = posY - animatedSpriteType.getSpriteHeight() / 2;
+            spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
+            return spriteToAdd;
+        }
+    }, {
+        key: "generate_random_circle",
+        value: function generate_random_circle(posX, posY, index) {
+            var canvasWidth = document.getElementById("game_canvas").width;
+            var canvasHeight = document.getElementById("game_canvas").height;
+            var spriteTypeToUse = void 0;
+            switch (index) {
+                case 3:
+                    spriteTypeToUse = "RED";
+                    break;
+                case 4:
+                    spriteTypeToUse = "BLUE";
+                    break;
+                case 5:
+                    spriteTypeToUse = "GREEN";
+                    break;
+                case 6:
+                    spriteTypeToUse = "CYAN";
+                    break;
+                case 7:
+                    spriteTypeToUse = "YELLOW";
+                    break;
+                case 8:
+                    spriteTypeToUse = "MAGENTA";
+                    break;
+                default:
+                    spriteTypeToUse = "MAGENTA";
+                    break;
+            }
+            var spriteToAdd = new GradientCircle_1.GradientCircle(new GradientCircleType_1.GradientCircleType(1, 1), spriteTypeToUse, SceneGraph_1.SceneGraph.lastIndex);
+            SceneGraph_1.SceneGraph.lastIndex++;
+            var newX = posX;
+            var newY = posY;
             spriteToAdd.getPosition().set(newX, newY, 0.0, 1.0);
             return spriteToAdd;
         }
@@ -566,7 +634,7 @@ var ResourceManager = function () {
 
 exports.ResourceManager = ResourceManager;
 
-},{"../rendering/WebGLGameTexture":18,"../scene/SceneGraph":20,"../scene/sprite/AnimatedSprite":24,"../scene/sprite/AnimatedSpriteType":25}],4:[function(require,module,exports){
+},{"../rendering/WebGLGameTexture":18,"../scene/SceneGraph":20,"../scene/circle/GradientCircle":22,"../scene/circle/GradientCircleType":23,"../scene/sprite/AnimatedSprite":24,"../scene/sprite/AnimatedSpriteType":25}],4:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -4168,10 +4236,7 @@ var UIController = function () {
             var sprite = _this.scene.getSpriteAt(mousePressX, mousePressY);
             var circle = _this.scene.getCircleAt(mousePressX, mousePressY);
             if (sprite != null) {
-                if (circle != null && circle.getIndexNum() < sprite.getIndexNum()) {
-                    _this.spritesToRemove.push(sprite);
-                    circle = null; //force the next if statement not to execute
-                }
+                _this.spritesToRemove.push(sprite);
             }
             if (circle != null) {
                 _this.circlesToRemove.push(circle);

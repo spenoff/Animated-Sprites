@@ -111,10 +111,7 @@ export class UIController {
         let sprite : AnimatedSprite = this.scene.getSpriteAt(mousePressX, mousePressY);
         let circle : GradientCircle = this.scene.getCircleAt(mousePressX, mousePressY);
         if(sprite != null){
-            if(circle != null && circle.getIndexNum() < sprite.getIndexNum()){
-                this.spritesToRemove.push(sprite);
-                circle = null; //force the next if statement not to execute
-            }
+            this.spritesToRemove.push(sprite);
         }
         if(circle != null){
             this.circlesToRemove.push(circle);

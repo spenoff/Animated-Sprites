@@ -11,6 +11,7 @@ import {AnimatedSprite} from './scene/sprite/AnimatedSprite'
 import {ResourceManager} from './files/ResourceManager'
 import {UIController} from './ui/UIController'
 import { GradientCircle } from './scene/circle/GradientCircle'
+import { GradientCircleType } from './scene/circle/GradientCircleType'
 
 export class Game extends GameLoopTemplate {
     private resourceManager : ResourceManager = new ResourceManager();
@@ -118,6 +119,10 @@ export class Game extends GameLoopTemplate {
         this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
     }
 
+    private randOneToEight() : number {
+        return Math.floor(Math.random() * 8) + 1;
+    }
+
     /**
      * Updates the scene.
      */
@@ -126,13 +131,44 @@ export class Game extends GameLoopTemplate {
          var to_add = this.uiController.getNumObjectsToAdd();
          if(to_add > 0){
             for(var i = 0; i < to_add; i++){
-                var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos());
-                this.sceneGraph.addAnimatedSprite(new_sprite);
-                var visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
-                this.uiController.subNumObjectsToAdd();
+                var rnum = this.randOneToEight()
+                switch(rnum){
+                    case 1:
+                    case 2:
+                        var new_sprite = this.resourceManager.generate_random_sprite(this.uiController.getXPos(), this.uiController.getYPos(), rnum);
+                        this.sceneGraph.addAnimatedSprite(new_sprite);
+                        this.uiController.subNumObjectsToAdd();
+                        break;
+                    default:
+                        var rcirc = this.resourceManager.generate_random_circle(this.uiController.getXPos(), this.uiController.getYPos(), rnum);
+                        this.sceneGraph.addGradientCirlce(rcirc);
+                        this.uiController.subNumObjectsToAdd();
+                        break;
 
+                }
+                var visibleSprites = <Array<AnimatedSprite>>this.sceneGraph.scope();
+
+            let circleSet : Array<GradientCircle>;
+            circleSet = <Array<GradientCircle>>this.sceneGraph.scope2();
+            let redSet : Array<GradientCircle>;
+            redSet = circleSet.filter(this.isRed);
+
+            let blueSet : Array<GradientCircle>;
+            blueSet = circleSet.filter(this.isBlue);
+
+            let greenSet : Array<GradientCircle>;
+            greenSet = circleSet.filter(this.isGreen);
+
+            let yellowSet : Array<GradientCircle>;
+            yellowSet = circleSet.filter(this.isYellow);
+
+            let cyanSet : Array<GradientCircle>;
+            cyanSet = circleSet.filter(this.isCyan);
+
+            let magentaSet : Array<GradientCircle>;
+            magentaSet = circleSet.filter(this.isMagenta);
+            this.renderingSystem.render(visibleSprites, redSet, blueSet, greenSet, cyanSet, yellowSet, magentaSet);
             }
-            this.renderingSystem.render(visibleSprites, [], [], [], [], [], []);
         }
         while(this.uiController.getSpritesToRemove().length > 0){
             var sprite = this.uiController.popSpritesToRemove();
@@ -145,9 +181,7 @@ export class Game extends GameLoopTemplate {
             //sprite.clearSprite();
             this.sceneGraph.removeGradientCircle(circle);
         }
-    }
-
-    
+    }  
     
     /**
      * Updates the FPS counter.
